@@ -6,11 +6,11 @@ class HomePage(ListView):
     model = Lesson
     context_object_name = "lesson_list"
 
-class TestPage(TemplateView):
-    template_name = 'test.html'
+class HelloPage(TemplateView):
+    template_name = 'hello.html'
 
-class ThanksPage(TemplateView):
-    template_name = 'thanks.html'
+class GoodbyePage(TemplateView):
+    template_name = 'goodbye.html'
 
 class AboutPage(TemplateView):
     template_name = "about.html"
