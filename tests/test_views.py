@@ -23,9 +23,9 @@ class HomePageTests(TestCase):
 class AboutPageTests(TestCase):
     """Tests about page"""
 
-    def test__about_page_status_code(self):
+    def test_about_page_status_code(self):
         """Tests if homepage status code is 200"""
-        response = self.client.get("/")
+        response = self.client.get("/about/")
         self.assertEqual(response.status_code, 200)
 
     def test_about_view_uses_correct_template(self):
@@ -43,7 +43,7 @@ class GamesPageTests(TestCase):
 
     def test_games_page_status_code(self):
         """Tests if games page status code is 200"""
-        response = self.client.get("/")
+        response = self.client.get("/games/")
         self.assertEqual(response.status_code, 200)
 
     def test_games_view_uses_correct_template(self):
@@ -55,4 +55,3 @@ class GamesPageTests(TestCase):
         """Tests if games page contains Lesson Planner heading"""
         response = self.client.get(reverse("games"))
         self.assertContains(response, "Games")
-
