@@ -1,0 +1,20 @@
+{% extends 'lessons/lesson_base.html' %}
+
+{% block lesson_title %}- Lessons Plans {% endblock %}
+
+{% block lesson_header %}
+  Lesson Plans
+{% endblock %}
+
+{% block lesson_content %}
+  <ul class="lesson-list">
+    {% for lesson in lesson_list %}
+      <li class="lesson-list-item">
+        <a href="{% url "lessons:lesson_detail" lesson.id %}">{{ lesson.title }}</a>
+        created by <strong><a href="{% url 'lessons:by_user' username=lesson.author %}">{{ lesson.author }}</a></strong> on <strong>{{ lesson.created_at }}</strong>
+      </li>
+    {% empty %}
+      <p>No lesson plans yet</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% block lesson_title %}{% endblock %}
+{% endblock %}
+
+{% block header %}
+  <h1 class="header-title">{% block lesson_header %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="lesson">
+    {% block lesson_content %}{% endblock %}
+  </div>
+{% endblock %}

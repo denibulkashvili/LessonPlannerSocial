@@ -1,0 +1,54 @@
+{% extends 'lessons/lesson_base.html' %}
+
+{% block lesson_title %}- Lesson: {{ lesson.title }} {% endblock %}
+
+{% block lesson_header %}
+  Lesson: {{ lesson.title }} 
+{% endblock %}
+
+{% block lesson_content %}
+  <div class="lesson-actions">
+    {% if user.is_authenticated and user == lesson.author %}
+      <ul>
+        <li><a href="#">Edit Lesson</a></li>
+        <li><a href="{% url 'lessons:delete' pk=lesson.id %}">Delete Lesson</a></li>
+      </ul>
+    {% endif %}
+  </div>
+  <div class="lesson-author">{{ lesson.author }}</div>
+  <div class="lesson-date">Created at: {{ lesson.created_at }}</div>
+  <div class="lesson-tags">
+    <ul>
+      {% for tag in lesson.tags.all %}
+        <li class="lesson-tag-single">
+          <a href="{% url 'lessons:tag_detail' slug=tag.slug %}">
+            #{{ tag.name }}
+          </a>
+        </li>
+      {% empty %}
+        <li>No tags</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="lesson-book">Book: {{ lesson.book }} </div>
+  <div class="lesson-number">{{ lesson.lesson_number }}</div>
+  <div class="lesson-duration">{{ lesson.lesson_duration }}</div>
+  <div class="lesson-objectives">
+    {{ lesson.lesson_objectives }}
+  </div>
+  <div class="lesson-resources">{{ lesson.resources }}</div>
+  <div class="lesson-content">{{ lesson.content }}</div>
+  <div class="lesson-video">
+    <p>Video:</p>
+    {% if lesson.video_url %}
+    <iframe width="640" 
+      height="385"
+      src="{{ lesson.embed_video_url }}"
+      class="lesson-video-iframe">
+    </iframe>
+    {% else %}
+      No video for this lesson.
+    {% endif %}
+
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'lessons/lesson_base.html' %}
+
+{% block lesson_title %}- New Lesson Plan {% endblock %}
+
+{% block lesson_header %}
+  Add a New Lesson Plan
+{% endblock %}
+
+{% block lesson_content %}
+  <form action="{% url 'lessons:create' %}" method="POST" class="lesson-form">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="btn" value="Add Lesson Plan">
+  </form>
+{% endblock %}
