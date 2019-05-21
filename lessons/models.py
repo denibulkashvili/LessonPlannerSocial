@@ -44,6 +44,9 @@ class Lesson(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [models.Index(fields=["title"])]
+        unique_together = ["author", "content"]
+
     def __str__(self):
         return self.title
 
