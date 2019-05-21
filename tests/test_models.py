@@ -142,3 +142,27 @@ class TagTestCase(TestCase):
     def test_get_absolute_url(self):
         self.assertEqual(self.tag.get_absolute_url(), f"/lessons/with-tag/{self.tag.slug}/")
 
+class BookTestCase(TestCase):
+    """Tests Tag model"""
+    @classmethod
+    def setUpTestData(cls):
+        Book.objects.create(title="New Book Title")
+
+    def setUp(self):
+        self.book = Book.objects.get(id=1)
+
+    def test_book_title_field_label(self):
+        field_label = self.book._meta.get_field('title').verbose_name
+        self.assertEqual(field_label, 'book title')
+
+    def test_book_title_max_length(self):
+        max_length = self.book._meta.get_field('title').max_length
+        self.assertEqual(max_length, 100)
+
+    def test_slug_name(self):
+        expected_slug_name = self.book.slug
+        split_n_join = lambda x: ("-".join(x.split(" "))).lower()
+        self.assertEqual(expected_slug_name, split_n_join(self.book.title))
+
+    def test_get_absolute_url(self):
+        self.assertEqual(self.book.get_absolute_url(), f"/lessons/from-book/{self.book.slug}/")
