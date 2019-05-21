@@ -60,9 +60,18 @@ class DeleteLessonView(LoginRequiredMixin, DeleteView):
         return super().delete(*args, **kwargs)
     
 
-class LessonListByUser(ListView):
-    model = Lesson
-    context_object_name = "lesson_list"
+class TagListView(ListView):
+    model = Tag
+    context_object_name = "tag_list"
 
-class LessonDetailView(DetailView):
-    model = Lesson
+class TagDetailView(DetailView):
+    model = Tag
+    context_object_name = "tag_detail"
+
+class BookListView(ListView):
+    model = Book
+    context_object_name = "book_list"
+
+class BookDetailView(DetailView):
+    model = Book
+    context_object_name = "book_detail"
