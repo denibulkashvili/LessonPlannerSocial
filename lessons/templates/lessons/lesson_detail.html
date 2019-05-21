@@ -40,7 +40,7 @@
   <div class="lesson-content">{{ lesson.content }}</div>
   <div class="lesson-video">
     <p>Video:</p>
-    {% if lesson.video_url %}
+    {% if lesson.embed_video_url %}
     <iframe width="640" 
       height="385"
       src="{{ lesson.embed_video_url }}"

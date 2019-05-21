@@ -5,11 +5,11 @@ from urllib import parse
 # Create your models here.
 
 from django.contrib.auth import get_user_model
-User = get_user_model()
+
 
 class Lesson(models.Model):
     title = models.CharField(max_length=200, verbose_name="lesson title")
-    author = models.ForeignKey(User, related_name="lessons", on_delete = models.CASCADE)
+    author = models.ForeignKey(get_user_model(), related_name="lessons", on_delete = models.CASCADE)
     created_at = models.DateField(auto_now=True)
     tags = models.ManyToManyField(
         "Tag", related_name="lessons", related_query_name="lesson"
@@ -28,13 +28,17 @@ class Lesson(models.Model):
     embed_video_url = models.CharField(max_length=2000, editable=False, default="")
 
     def get_embed_video_url(self):
+        try:
         video_url_parsed = parse.urlparse(self.video_url)
         qsl = parse.parse_qs(video_url_parsed.query)
         video_id = qsl["v"][0]
         self.embed_video_url = f"https://www.youtube.com/embed/{video_id}"
+        except KeyError:
+            print("Couldn't parse url. Check if url is a YouTube Video")
+
 
     def save(self, *args, **kwargs):
-        if self.video_url:
+        if self.video_url != "":
             self.get_embed_video_url()
         super(Lesson, self).save(*args, **kwargs)
 
