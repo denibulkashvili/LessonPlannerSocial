@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from urllib import parse
 
 # Create your models here.
@@ -29,17 +30,15 @@ class Lesson(models.Model):
 
     def get_embed_video_url(self):
         try:
-        video_url_parsed = parse.urlparse(self.video_url)
-        qsl = parse.parse_qs(video_url_parsed.query)
-        video_id = qsl["v"][0]
-        self.embed_video_url = f"https://www.youtube.com/embed/{video_id}"
+            video_url_parsed = parse.urlparse(self.video_url)
+            qsl = parse.parse_qs(video_url_parsed.query)
+            video_id = qsl["v"][0]
+            self.embed_video_url = f"https://www.youtube.com/embed/{video_id}"
         except KeyError:
             print("Couldn't parse url. Check if url is a YouTube Video")
 
-
     def save(self, *args, **kwargs):
-        if self.video_url != "":
-            self.get_embed_video_url()
+        self.get_embed_video_url()
         super(Lesson, self).save(*args, **kwargs)
 
     class Meta:
