@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from urllib import parse
 
 # Create your models here.
 
@@ -23,9 +24,25 @@ class Lesson(models.Model):
     )
     resources = models.TextField(max_length=500, verbose_name="resources", default="")
     content = models.TextField(max_length=500, verbose_name="content", default="")
+    video_url = models.CharField(max_length=2000, verbose_name="video link", default="", blank=True)
+    embed_video_url = models.CharField(max_length=2000, editable=False, default="")
+
+    def get_embed_video_url(self):
+        video_url_parsed = parse.urlparse(self.video_url)
+        qsl = parse.parse_qs(video_url_parsed.query)
+        video_id = qsl["v"][0]
+        self.embed_video_url = f"https://www.youtube.com/embed/{video_id}"
+
+    def save(self, *args, **kwargs):
+        if self.video_url:
+            self.get_embed_video_url()
+        super(Lesson, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ["-created_at"]
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse(
             "lessons:lesson_detail", kwargs={
