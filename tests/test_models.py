@@ -115,3 +115,30 @@ class LessonTestCase(TestCase):
     def test_embed_video_url_parsed_correctly(self):
         expected_object_name = self.lesson.embed_video_url
         self.assertEqual(expected_object_name, "https://www.youtube.com/embed/tVlcKp3bWH8")
+
+
+class TagTestCase(TestCase):
+    """Tests Tag model"""
+    @classmethod
+    def setUpTestData(cls):
+        Tag.objects.create(name="new tag")
+
+    def setUp(self):
+        self.tag = Tag.objects.get(id=1)
+
+    def test_tag_name_field_label(self):
+        field_label = self.tag._meta.get_field('name').verbose_name
+        self.assertEqual(field_label, 'name')
+
+    def test_tag_name_max_length(self):
+        max_length = self.tag._meta.get_field('name').max_length
+        self.assertEqual(max_length, 20)
+
+    def test_slug_name(self):
+        expected_slug_name = self.tag.slug
+        split_n_join = lambda x: "-".join(x.split(" "))
+        self.assertEqual(expected_slug_name, split_n_join(self.tag.name))
+
+    def test_get_absolute_url(self):
+        self.assertEqual(self.tag.get_absolute_url(), f"/lessons/with-tag/{self.tag.slug}/")
+
