@@ -3,3 +3,5 @@ from .models import Book, Lesson, Tag
 
 # Register your models here.
 admin.site.register(Lesson)
+admin.site.register(Tag)
+admin.site.register(Book)
