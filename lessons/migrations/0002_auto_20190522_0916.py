@@ -6,24 +6,22 @@ import uuid
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('lessons', '0001_initial'),
-    ]
+    dependencies = [("lessons", "0001_initial")]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='slug',
+            model_name="book",
+            name="slug",
             field=models.SlugField(allow_unicode=True, default=uuid.uuid1, unique=True),
         ),
         migrations.AlterField(
-            model_name='lesson',
-            name='embed_video_url',
-            field=models.CharField(default='', editable=False, max_length=2000),
+            model_name="lesson",
+            name="embed_video_url",
+            field=models.CharField(default="", editable=False, max_length=2000),
         ),
         migrations.AlterField(
-            model_name='tag',
-            name='slug',
+            model_name="tag",
+            name="slug",
             field=models.SlugField(allow_unicode=True, default=uuid.uuid1, unique=True),
         ),
     ]

@@ -9,12 +9,16 @@ class LessonTestCase(TestCase):
         """
         Run once to set up non-modified data for all class methods
         """
-        user = User.objects.create_user(username="test_model_user", email="test_model_user@mail.com", password="test123")
+        user = User.objects.create_user(
+            username="test_model_user",
+            email="test_model_user@mail.com",
+            password="test123",
+        )
         book = Book.objects.create(title="Test Book")
         Lesson.objects.create(
-            title="Food lesson", 
-            book=book, 
-            author=user, 
+            title="Food lesson",
+            book=book,
+            author=user,
             lesson_number="33",
             lesson_duration=90,
             lesson_objectives="Learn about stuff",
@@ -25,7 +29,7 @@ class LessonTestCase(TestCase):
 
     def setUp(self):
         self.lesson = Lesson.objects.get(id=1)
-        self.client.login(username='test_model_user', password='test123')
+        self.client.login(username="test_model_user", password="test123")
 
     def test_title_label(self):
         field_label = self.lesson._meta.get_field("title").verbose_name
@@ -41,7 +45,9 @@ class LessonTestCase(TestCase):
 
     def test_get_absolute_url(self):
         # This will also fail if the urlconf is not defined.
-        self.assertEqual(self.lesson.get_absolute_url(), f"/lessons/id/{self.lesson.id}/")
+        self.assertEqual(
+            self.lesson.get_absolute_url(), f"/lessons/id/{self.lesson.id}/"
+        )
 
     def test_author_field(self):
         """Test post author field"""
@@ -110,15 +116,20 @@ class LessonTestCase(TestCase):
         self.assertEqual(field_label, "video link")
         self.assertEqual(max_length, 2000)
         expected_object_name = self.lesson.video_url
-        self.assertEqual(expected_object_name, "https://www.youtube.com/watch?v=tVlcKp3bWH8")
+        self.assertEqual(
+            expected_object_name, "https://www.youtube.com/watch?v=tVlcKp3bWH8"
+        )
 
     def test_embed_video_url_parsed_correctly(self):
         expected_object_name = self.lesson.embed_video_url
-        self.assertEqual(expected_object_name, "https://www.youtube.com/embed/tVlcKp3bWH8")
+        self.assertEqual(
+            expected_object_name, "https://www.youtube.com/embed/tVlcKp3bWH8"
+        )
 
 
 class TagTestCase(TestCase):
     """Tests Tag model"""
+
     @classmethod
     def setUpTestData(cls):
         Tag.objects.create(name="new tag")
@@ -127,23 +138,27 @@ class TagTestCase(TestCase):
         self.tag = Tag.objects.get(id=1)
 
     def test_tag_name_field_label(self):
-        field_label = self.tag._meta.get_field('name').verbose_name
-        self.assertEqual(field_label, 'tag name')
+        field_label = self.tag._meta.get_field("name").verbose_name
+        self.assertEqual(field_label, "tag name")
 
     def test_tag_name_max_length(self):
-        max_length = self.tag._meta.get_field('name').max_length
+        max_length = self.tag._meta.get_field("name").max_length
         self.assertEqual(max_length, 20)
 
     def test_slug_name(self):
         expected_slug_name = self.tag.slug
-        split_n_join = lambda x: "-".join(x.split(" ")) # mimics slugify
+        split_n_join = lambda x: "-".join(x.split(" "))  # mimics slugify
         self.assertEqual(expected_slug_name, split_n_join(self.tag.name))
 
     def test_get_absolute_url(self):
-        self.assertEqual(self.tag.get_absolute_url(), f"/lessons/with-tag/{self.tag.slug}/")
+        self.assertEqual(
+            self.tag.get_absolute_url(), f"/lessons/with-tag/{self.tag.slug}/"
+        )
+
 
 class BookTestCase(TestCase):
     """Tests Book model"""
+
     @classmethod
     def setUpTestData(cls):
         Book.objects.create(title="New Book Title")
@@ -152,11 +167,11 @@ class BookTestCase(TestCase):
         self.book = Book.objects.get(id=1)
 
     def test_book_title_field_label(self):
-        field_label = self.book._meta.get_field('title').verbose_name
-        self.assertEqual(field_label, 'book title')
+        field_label = self.book._meta.get_field("title").verbose_name
+        self.assertEqual(field_label, "book title")
 
     def test_book_title_max_length(self):
-        max_length = self.book._meta.get_field('title').max_length
+        max_length = self.book._meta.get_field("title").max_length
         self.assertEqual(max_length, 100)
 
     def test_slug_name(self):
@@ -165,4 +180,6 @@ class BookTestCase(TestCase):
         self.assertEqual(expected_slug_name, split_n_join(self.book.title))
 
     def test_get_absolute_url(self):
-        self.assertEqual(self.book.get_absolute_url(), f"/lessons/from-book/{self.book.slug}/")
+        self.assertEqual(
+            self.book.get_absolute_url(), f"/lessons/from-book/{self.book.slug}/"
+        )

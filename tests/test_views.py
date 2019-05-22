@@ -2,6 +2,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
+
 class HomePageTests(TestCase):
     """Tests home page"""
 
@@ -20,6 +21,7 @@ class HomePageTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertContains(response, "Lesson Planner")
 
+
 class AboutPageTests(TestCase):
     """Tests about page"""
 
@@ -37,6 +39,7 @@ class AboutPageTests(TestCase):
         """Tests if homepage contains Lesson Planner heading"""
         response = self.client.get(reverse("about"))
         self.assertContains(response, "About")
+
 
 class GamesPageTests(TestCase):
     """Tests games page"""
