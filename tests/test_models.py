@@ -128,7 +128,7 @@ class TagTestCase(TestCase):
 
     def test_tag_name_field_label(self):
         field_label = self.tag._meta.get_field('name').verbose_name
-        self.assertEqual(field_label, 'name')
+        self.assertEqual(field_label, 'tag name')
 
     def test_tag_name_max_length(self):
         max_length = self.tag._meta.get_field('name').max_length
@@ -136,14 +136,14 @@ class TagTestCase(TestCase):
 
     def test_slug_name(self):
         expected_slug_name = self.tag.slug
-        split_n_join = lambda x: "-".join(x.split(" "))
+        split_n_join = lambda x: "-".join(x.split(" ")) # mimics slugify
         self.assertEqual(expected_slug_name, split_n_join(self.tag.name))
 
     def test_get_absolute_url(self):
         self.assertEqual(self.tag.get_absolute_url(), f"/lessons/with-tag/{self.tag.slug}/")
 
 class BookTestCase(TestCase):
-    """Tests Tag model"""
+    """Tests Book model"""
     @classmethod
     def setUpTestData(cls):
         Book.objects.create(title="New Book Title")
