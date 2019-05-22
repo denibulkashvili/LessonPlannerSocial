@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from urllib import parse
+import uuid
 
 # Create your models here.
 
@@ -62,7 +63,7 @@ class Tag(models.Model):
     """Creates a Tag model"""
 
     name = models.CharField(max_length=20, verbose_name="tag name")
-    slug = models.SlugField(allow_unicode=True, unique=True)
+    slug = models.SlugField(allow_unicode=True, unique=True, default=uuid.uuid1)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -81,7 +82,7 @@ class Tag(models.Model):
 class Book(models.Model):
     """Creates a Book model"""
     title = models.CharField(max_length=100, verbose_name="book title")
-    slug = models.SlugField(allow_unicode=True, unique=True )
+    slug = models.SlugField(allow_unicode=True, unique=True, default=uuid.uuid1)
 
     def save(self, *args, **kwargs):
        self.slug = slugify(self.title)
