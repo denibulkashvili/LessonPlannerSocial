@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  - Tag: {{ tag.name }}
+{% endblock %}
+
+{% block header %}
+  <h1 class="header-title">Tag: {{ tag.name }}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="tag-detail">
+    <ul>
+      {% for lesson in tag.lessons.all %}
+        <li><a href="{% url 'lessons:lesson_detail' pk=lesson.id %}">{{ lesson.title }}</a></li>
+      {% empty %}
+        <p>No lessons with this tag</p>
+        {% if user.is_authenticated %}
+          <p><a href="{% url 'lessons:create' %}">Create one</a></p>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

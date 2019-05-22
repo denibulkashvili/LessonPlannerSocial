@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  - All Tags
+{% endblock %}
+
+{% block header %}
+  <h1 class="header-title">All Tags</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="tags">
+    <ul>
+      {% for tag in tag_list %}
+        <li><a href="{% url 'lessons:tag_detail' slug=tag.slug %}">{{ tag.name }}</a></li>
+      {% empty %}
+        <li>No tags yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
