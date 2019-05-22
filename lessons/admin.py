@@ -1,3 +1,4 @@
+"""Admin file fo lessons app"""
 from django.contrib import admin
 from .models import Book, Lesson, Tag
 

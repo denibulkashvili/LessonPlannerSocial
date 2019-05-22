@@ -1,15 +1,18 @@
+"""Models for lesson app"""
+import uuid
+from urllib import parse
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-from urllib import parse
-import uuid
+
 
 # Create your models here.
-
+# pylint:disable=arguments-differ
 from django.contrib.auth import get_user_model
 
 
 class Lesson(models.Model):
+    """Creates a Leson model"""
     title = models.CharField(max_length=200, verbose_name="lesson title")
     author = models.ForeignKey(
         get_user_model(), related_name="lessons", on_delete=models.CASCADE
@@ -36,6 +39,7 @@ class Lesson(models.Model):
     embed_video_url = models.CharField(max_length=2000, editable=False, default="")
 
     def get_embed_video_url(self):
+        """Parses Youtube video url and formats a url for embed player"""
         try:
             video_url_parsed = parse.urlparse(self.video_url)
             qsl = parse.parse_qs(video_url_parsed.query)
@@ -57,6 +61,7 @@ class Lesson(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        """Returns absolute url"""
         return reverse(
             "lessons:lesson_detail",
             kwargs={
@@ -83,6 +88,7 @@ class Tag(models.Model):
         return self.name
 
     def get_absolute_url(self):
+        """Method to get absolute url for a tag"""
         return reverse("lessons:tag_detail", kwargs={"slug": self.slug})
 
 
@@ -100,6 +106,7 @@ class Book(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        """Method to get absolute url for a book"""
         return reverse("lessons:book_detail", kwargs={"slug": self.slug})
 
     class Meta:
