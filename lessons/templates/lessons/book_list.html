@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  - All Books
+{% endblock %}
+
+{% block header %}
+  <h1 class="header-title">All Books</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="books">
+    <ul>
+      {% for book in book_list %}
+        <li><a href="{% url 'lessons:book_detail' slug=book.slug %}">{{ book.title }}</a></li>
+      {% empty %}
+        <li>No books yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

@@ -15,7 +15,7 @@
       </ul>
     {% endif %}
   </div>
-  <div class="lesson-author">{{ lesson.author }}</div>
+  <div class="lesson-author"><a href="{% url 'lessons:by_user' username=lesson.author.username %}">{{ lesson.author }}</a></div>
   <div class="lesson-date">Created at: {{ lesson.created_at }}</div>
   <div class="lesson-tags">
     <ul>
