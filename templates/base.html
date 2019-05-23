@@ -23,8 +23,9 @@
       <li><a href="{% url 'games' %}">Games</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
-        <li>Logged in as <a href="{% url 'lessons:by_user' username=user.username %}">{{ user.username }}</a></li>
+        <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
         <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
+        <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
         <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
       {% else %}
         <li><a href="{% url 'accounts:login' %}">Login</a></li>
