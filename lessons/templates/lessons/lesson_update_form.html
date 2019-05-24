@@ -1,0 +1,15 @@
+{% extends 'lessons/lesson_base.html' %}
+
+{% block lesson_title %}- Update Lesson Plan {% endblock %}
+
+{% block lesson_header %}
+  Update Lesson Plan {{ lesson.title }}
+{% endblock %}
+
+{% block lesson_content %}
+  <form action="{% url 'lessons:update' pk=lesson.id %}" method="POST" class="lesson-form">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="btn" value="Update Lesson Plan">
+  </form>
+{% endblock %}

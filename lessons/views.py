@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.views.generic import CreateView, DeleteView, DetailView, ListView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from lessons.models import Book, Lesson, Tag
 
@@ -79,6 +79,25 @@ class DeleteLessonView(LoginRequiredMixin, DeleteView):
     def delete(self, *args, **kwargs):
         messages.success(self.request, "Post deleted.")
         return super().delete(*args, **kwargs)
+
+
+
+class UpdateLessonView(UpdateView):
+    """Update lesson view"""
+    model = Lesson
+    fields = (
+        "title",
+        "tags",
+        "book",
+        "lesson_number",
+        "lesson_duration",
+        "lesson_objectives",
+        "resources",
+        "content",
+        "video_url",
+    )
+    template_name_suffix = '_update_form'
+
 
 
 class TagListView(ListView):

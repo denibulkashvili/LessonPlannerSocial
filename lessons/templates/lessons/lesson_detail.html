@@ -10,7 +10,7 @@
   <div class="lesson-actions">
     {% if user.is_authenticated and user == lesson.author %}
       <ul>
-        <li><a href="#">Edit Lesson</a></li>
+        <li><a href="{% url 'lessons:update' pk=lesson.id %}">Edit Lesson</a></li>
         <li><a href="{% url 'lessons:delete' pk=lesson.id %}">Delete Lesson</a></li>
       </ul>
     {% endif %}
