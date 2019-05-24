@@ -88,8 +88,9 @@ WSGI_APPLICATION = "lesson_planner.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
+DOTENV_FILE = os.path.join(BASE_DIR, "lesson_planner/.env")
+if os.path.isfile(DOTENV_FILE):
+    DEFAULT_DB = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": env("DB_NAME"),
         "USER": env("DB_USER"),
@@ -98,6 +99,15 @@ DATABASES = {
         "PORT": env("DB_PORT"),
         'CONN_MAX_AGE': 500,
     }
+else:
+    DEFAULT_DB = {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "DATABASE_URL": env("DATABASE_URL")
+    }
+
+
+DATABASES = {
+    "default": DEFAULT_DB
 }
 
 
