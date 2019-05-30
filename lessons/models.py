@@ -15,11 +15,11 @@ class Lesson(models.Model):
     """Creates a Leson model"""
     title = models.CharField(max_length=200, verbose_name="lesson title", blank=False, default="")
     author = models.ForeignKey(
-        get_user_model(), related_name="lessons", on_delete=models.CASCADE
+        get_user_model(), related_name="lessons", on_delete=models.CASCADE, blank=True
     )
     created_at = models.DateField(auto_now=True)
     tags = models.ManyToManyField(
-        "Tag", related_name="lessons", related_query_name="lesson"
+        "Tag", related_name="lessons", related_query_name="lesson", blank=True
     )
     book = models.ForeignKey("Book", related_name="lessons", on_delete=models.CASCADE)
     lesson_number = models.CharField(
@@ -32,7 +32,7 @@ class Lesson(models.Model):
         max_length=500, verbose_name="lesson objectives", default="", blank=True
     )
     resources = models.TextField(max_length=500, verbose_name="resources", default="", blank=True)
-    content = models.TextField(max_length=500, verbose_name="content", default="")
+    content = models.TextField(max_length=500, verbose_name="content", default="", blank=False)
     video_url = models.CharField(
         max_length=2000, verbose_name="video link", default="", blank=True
     )

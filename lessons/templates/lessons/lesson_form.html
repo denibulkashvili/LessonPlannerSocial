@@ -13,12 +13,20 @@
     <form action="{% url 'lessons:create' %}" method="POST" class="col s12">
         {% csrf_token %}
         {{ form.non_field_errors }}
+
+        {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+              <span class="helper-text" data-error="wrong" data-success="right">{{ error }}</span>
+              {% endfor %}
+          {% endfor %}
+        {% endif %}
         
         <!-- title filed -->
         <div class="row">
           <div class="input-field col s12">
             {{ form.title.errors }}
-            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+            <label for="{{ form.title.id_for_label }}">{{ form.title.label }} *</label>
             {{ form.title }}
             <span class="helper-text" data-error="wrong" data-success="right">{{ form.title.help_text  }}</span>
           </div>
@@ -26,15 +34,16 @@
   
         <!-- tags field -->
         <div class="row">
-          <div class=" input-field col s12 ">
+          
+        </div>
+  
+        <!-- tags field & books field -->
+        <div class="row">
+          <div class="input-field col s6">
             {{ form.tags }}
             <label for="{{ form.tags.id_for_label }}">{{ form.tags.label }}</label>
           </div>
-        </div>
-  
-        <!-- books field -->
-        <div class="row">
-          <div class="input-field  col s12 ">
+          <div class="input-field col s6">
             {{ form.book }}
             <label for="{{ form.book.id_for_label }}">{{ form.book.label }}</label>
           </div>
@@ -83,7 +92,7 @@
               id="{{ form.content.id_for_label }}" 
               class="materialize-textarea"
               name="{{ form.content.html_name }}">{{ form.content.value }}</textarea>
-            <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+            <label for="{{ form.content.id_for_label }}">{{ form.content.label }} *</label>
           </div>
         </div>
   
