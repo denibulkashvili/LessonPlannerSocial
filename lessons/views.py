@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from lessons.models import Book, Lesson, Tag
+from .forms import CreateLessonForm
 
 User = get_user_model() # pylint:disable=invalid-name
 
@@ -47,17 +48,7 @@ class LessonListByUser(ListView):
 
 class CreateLessonView(LoginRequiredMixin, CreateView):
     """Create a lesson view"""
-    fields = (
-        "title",
-        "tags",
-        "book",
-        "lesson_number",
-        "lesson_duration",
-        "lesson_objectives",
-        "resources",
-        "content",
-        "video_url",
-    )
+    form_class = CreateLessonForm
     model = Lesson
 
     def form_valid(self, form):
