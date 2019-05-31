@@ -9,37 +9,86 @@
 {% block lesson_content %}
   <div class="lesson-actions">
     {% if user.is_authenticated and user == lesson.author %}
-      <ul>
-        <li><a href="{% url 'lessons:update' pk=lesson.id %}">Edit Lesson</a></li>
-        <li><a href="{% url 'lessons:delete' pk=lesson.id %}">Delete Lesson</a></li>
-      </ul>
+      <div class="lesson-buttons center">
+        <a class="waves-effect waves-light btn" href="{% url 'lessons:update' pk=lesson.id %}">
+            <i class="material-icons left">edit</i>Edit
+        </a>
+        <a class="waves-effect waves-light btn" href="{% url 'lessons:delete' pk=lesson.id %}">
+            <i class="material-icons left">delete</i>Delete
+        </a>
+      </div>  
     {% endif %}
   </div>
-  <div class="lesson-author"><a href="{% url 'lessons:by_user' username=lesson.author.username %}">{{ lesson.author }}</a></div>
-  <div class="lesson-date">Created at: {{ lesson.created_at }}</div>
-  <div class="lesson-tags">
-    <ul>
+
+  <h3>Information</h3>
+
+  <ul class="collection z-depth-1">
+    <li class="collection-item">
+      <i class="material-icons left">account_circle</i>
+      Author: <a href="{% url 'lessons:by_user' username=lesson.author.username %}">{{ lesson.author }}</a>
+    </li>
+
+    <li class="collection-item">
+      <i class="material-icons left">date_range</i>
+      {{ lesson.created_at }}
+    </li>
+
+    <li class="collection-item">
+      <i class="material-icons left">local_offer</i>
       {% for tag in lesson.tags.all %}
-        <li class="lesson-tag-single">
-          <a href="{% url 'lessons:tag_detail' slug=tag.slug %}">
+        <span class="badge left blue">
+          <a href="{% url 'lessons:tag_detail' slug=tag.slug %}" class="white-text">
             #{{ tag.name }}
           </a>
-        </li>
+        </span>
+        &nbsp;
       {% empty %}
-        <li>No tags</li>
+        No tags
       {% endfor %}
-    </ul>
+    </li>
+
+    <li class="collection-item">
+      <i class="material-icons left">book</i>
+      <a href="{% url 'lessons:book_detail' slug=lesson.book.slug %}">{{ lesson.book }}</a>
+    </li>
+
+    <li class="collection-item">
+        <i class="material-icons left">info</i>
+        Lesson number: {{ lesson.lesson_number }}
+    </li>
+
+    <li class="collection-item">
+        <i class="material-icons left">alarm</i>
+        Lesson duration: {{ lesson.lesson_duration }} minutes.
+    </li>
+
+  </ul>
+
+  <div class="row">
+    <div class="col s6">
+      <div class="card small">
+        <div class="card-content">
+          <span class="card-title">Lesson objectives</span>
+          <p>{{ lesson.lesson_objectives }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="card small">
+        <div class="card-content">
+          <span class="card-title">Lesson resources</span>
+          <p>{{ lesson.resources }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="lesson-book">Book: {{ lesson.book }} </div>
-  <div class="lesson-number">{{ lesson.lesson_number }}</div>
-  <div class="lesson-duration">{{ lesson.lesson_duration }}</div>
-  <div class="lesson-objectives">
-    {{ lesson.lesson_objectives }}
+  
+  <div class="lesson-content">
+    <h3>Content</h3>
+    {{ lesson.content }}
   </div>
-  <div class="lesson-resources">{{ lesson.resources }}</div>
-  <div class="lesson-content">{{ lesson.content }}</div>
   <div class="lesson-video">
-    <p>Video:</p>
+    <h3>Video</h3>
     {% if lesson.embed_video_url %}
     <iframe width="640" 
       height="385"
