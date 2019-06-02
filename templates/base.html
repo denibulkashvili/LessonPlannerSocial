@@ -37,13 +37,13 @@
     </ul>
   </nav>
 
-  <header class="center">
-    {% block header %}
-    {% endblock %}
-  </header>
-
   <main class="container">
-      {% block content %}{% endblock %}
+    <header>
+      {% block header %}
+      {% endblock %}
+    </header>
+
+    {% block content %}{% endblock %}
   </main>
 
   <footer>
