@@ -18,24 +18,45 @@
 <body>
    
   <nav>
-    <ul>
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'lessons:lesson_list' %}">Lessons</a></li>
-      <li><a href="{% url 'lessons:tag_list' %}">Tags</a></li>
-      <li><a href="{% url 'lessons:book_list' %}">Books</a></li>
-      <li><a href="{% url 'games' %}">Games</a></li>
-      <li><a href="{% url 'about' %}">About</a></li>
-      {% if user.is_authenticated %}
-        <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
-        <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
-        <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
-        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-      {% else %}
-        <li><a href="{% url 'accounts:login' %}">Login</a></li>
-        <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-      {% endif %}
-    </ul>
+    <div class="nav-wrapper">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li> <a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'lessons:lesson_list' %}">Lessons</a></li>
+        <li><a href="{% url 'lessons:tag_list' %}">Tags</a></li>
+        <li><a href="{% url 'lessons:book_list' %}">Books</a></li>
+        <li><a href="{% url 'games' %}">Games</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
+          <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
+          <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+          <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'accounts:login' %}">Login</a></li>
+          <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li> <a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'lessons:lesson_list' %}">Lessons</a></li>
+    <li><a href="{% url 'lessons:tag_list' %}">Tags</a></li>
+    <li><a href="{% url 'lessons:book_list' %}">Books</a></li>
+    <li><a href="{% url 'games' %}">Games</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
+      <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
+      <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+      <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+    {% else %}
+      <li><a href="{% url 'accounts:login' %}">Login</a></li>
+      <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+    {% endif %}
+  </ul>
 
   <main class="container">
     <header>
