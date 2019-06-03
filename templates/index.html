@@ -27,6 +27,30 @@
     </div>
   </div>
 
+  <!-- Featured Lessons -->
+  <div class="row">
+    <div class="col s12">
+      <h2>Featured Lesson Plans</h2>
+      <ul class="collection">
+        {% for lesson in featured %}
+          <a href="{% url 'lessons:lesson_detail' pk=lesson.id %}" class="collection-item">
+            {% if lesson.tags %}
+              {% for tag in lesson.tags.all %}
+                <span class="badge blue white-text">
+                  {{ tag.name }}
+                </span>
+              {% endfor %}
+            {% endif %}
+            {{ lesson.title }}
+          </a>
+        {% empty %}
+          <li class="collection-item">No featured lessons yet.</li>
+        {% endfor %}
+          <a href="{% url 'lessons:lesson_list' %}" class="collection-item">All Lesson Plans >></a>
+      </ul>
+    </div>
+  </div>
+
   <div class="row">
     <!-- Popular Tags -->
     <div class="col s12 m6">
@@ -65,31 +89,8 @@
       </div>
     </div>
   </div>
-
-
-  <div class="row">
-    <div class="col s12">
-      <h2>Featured Lesson Plans</h2>
-      <ul class="collection">
-        {% for lesson in featured %}
-          <a href="{% url 'lessons:lesson_detail' pk=lesson.id %}" class="collection-item">
-            {% if lesson.tags %}
-              {% for tag in lesson.tags.all %}
-                <span class="badge blue white-text">
-                  {{ tag.name }}
-                </span>
-              {% endfor %}
-            {% endif %}
-            {{ lesson.title }}
-          </a>
-        {% empty %}
-          <li class="collection-item">No featured lessons yet.</li>
-        {% endfor %}
-          <a href="{% url 'lessons:lesson_list' %}" class="collection-item">All Lesson Plans >></a>
-      </ul>
-    </div>
-  </div>
-
+  
+  <!-- Latests Lessons -->
   <div class="row">
     <div class="col s12">
       <h2>Latests Lesson Plans</h2>
