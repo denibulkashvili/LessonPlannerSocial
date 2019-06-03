@@ -7,7 +7,13 @@ class HomePage(ListView):
     """Home page view"""
     template_name = "index.html"
     model = Lesson
-    context_object_name = "lesson_list"
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["latest"] = Lesson.objects.all()[:10]
+        return context
+    
 
 
 class HelloPage(TemplateView):
