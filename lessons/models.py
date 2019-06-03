@@ -37,6 +37,7 @@ class Lesson(models.Model):
         max_length=2000, verbose_name="video link", default="", blank=True
     )
     embed_video_url = models.CharField(max_length=2000, editable=False, default="")
+    is_featured = models.BooleanField(default=False)
 
     def get_embed_video_url(self):
         """Parses Youtube video url and formats a url for embed player"""

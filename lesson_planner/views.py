@@ -12,6 +12,7 @@ class HomePage(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["latest"] = Lesson.objects.all()[:10]
+        context["featured"] = Lesson.objects.filter(is_featured=True)
         return context
     
 
