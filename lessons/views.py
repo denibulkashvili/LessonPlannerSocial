@@ -31,14 +31,13 @@ class LessonDetailView(DetailView):
 
     model = Lesson
 
-
 class LessonListByUser(ListView):
     """Lesson list by user view"""
 
     model = Lesson
     # template_name = "user_lesson_list.html"
 
-    def get_queryset(self):
+    def get_queryset(self): # pylint:disable=attribute-defined-outside-init
         try:
             self.lesson_author = User.objects.prefetch_related("lessons").get(
                 username__iexact=self.kwargs.get("username")

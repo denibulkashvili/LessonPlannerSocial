@@ -5,7 +5,7 @@ from django.db.models import Count
 from lessons.models import Lesson, Tag, Book
 
 
-class HomePage(ListView):
+class HomePage(ListView): # pylint:disable=too-many-ancestors
     """Home page view"""
 
     template_name = "index.html"
@@ -29,7 +29,7 @@ class HomePage(ListView):
         )
         return ordered_books[:5]
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs): # pylint:disable=arguments-differ
         context = super().get_context_data(**kwargs)
         context["latest"] = Lesson.objects.all()[:10]
         context["featured"] = Lesson.objects.filter(is_featured=True).order_by("?")[:5]
