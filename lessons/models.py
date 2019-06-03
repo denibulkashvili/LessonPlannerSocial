@@ -13,7 +13,10 @@ from django.contrib.auth import get_user_model
 
 class Lesson(models.Model):
     """Creates a Leson model"""
-    title = models.CharField(max_length=200, verbose_name="lesson title", blank=False, default="")
+
+    title = models.CharField(
+        max_length=200, verbose_name="lesson title", blank=False, default=""
+    )
     author = models.ForeignKey(
         get_user_model(), related_name="lessons", on_delete=models.CASCADE, blank=True
     )
@@ -31,7 +34,9 @@ class Lesson(models.Model):
     lesson_objectives = models.TextField(
         max_length=3000, verbose_name="lesson objectives", default="", blank=True
     )
-    resources = models.TextField(max_length=2000, verbose_name="resources", default="", blank=True)
+    resources = models.TextField(
+        max_length=2000, verbose_name="resources", default="", blank=True
+    )
     content = models.TextField(default="", blank=False)
     video_url = models.CharField(
         max_length=2000, verbose_name="video link", default="", blank=True

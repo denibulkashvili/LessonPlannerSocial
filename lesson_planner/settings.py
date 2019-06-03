@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
 
-env = environ.Env( # pylint:disable=invalid-name
+env = environ.Env(  # pylint:disable=invalid-name
     # set casting, default value
     DEBUG=(bool, False)
 )
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -98,18 +98,16 @@ if os.path.isfile(DOTENV_FILE):
         "PASSWORD": env("DB_PASSWORD"),
         "HOST": env("DB_HOST"),
         "PORT": env("DB_PORT"),
-        'CONN_MAX_AGE': 500,
+        "CONN_MAX_AGE": 500,
     }
 else:
     DEFAULT_DB = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "DATABASE_URL": env("DATABASE_URL")
+        "DATABASE_URL": env("DATABASE_URL"),
     }
 
 
-DATABASES = {
-    "default": DEFAULT_DB
-}
+DATABASES = {"default": DEFAULT_DB}
 
 
 # Password validation
@@ -143,7 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 

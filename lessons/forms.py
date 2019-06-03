@@ -1,6 +1,7 @@
 from django import forms
 from .models import Lesson
 
+
 class CreateLessonForm(forms.ModelForm):
     """Form to create new lesson plans"""
 
@@ -17,6 +18,3 @@ class CreateLessonForm(forms.ModelForm):
             "content",
             "video_url",
         )
-        
-
-    

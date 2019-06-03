@@ -12,6 +12,7 @@ from . import forms
 # pylint:disable=too-many-ancestors
 class SignUp(CreateView):
     """User sign up view"""
+
     form_class = forms.UserCreateForm
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
@@ -30,6 +31,4 @@ def change_password(request):
         messages.error(request, "There's been an error.")
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, "accounts/change_password.html", {
-        "form": form
-    })           
+    return render(request, "accounts/change_password.html", {"form": form})

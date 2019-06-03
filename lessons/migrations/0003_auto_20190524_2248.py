@@ -5,34 +5,42 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('lessons', '0002_auto_20190522_0916'),
-    ]
+    dependencies = [("lessons", "0002_auto_20190522_0916")]
 
     operations = [
         migrations.AlterField(
-            model_name='lesson',
-            name='lesson_duration',
-            field=models.IntegerField(blank=True, verbose_name='lesson duration (in minutes)'),
+            model_name="lesson",
+            name="lesson_duration",
+            field=models.IntegerField(
+                blank=True, verbose_name="lesson duration (in minutes)"
+            ),
         ),
         migrations.AlterField(
-            model_name='lesson',
-            name='lesson_number',
-            field=models.CharField(blank=True, default='', max_length=30, verbose_name='lesson number'),
+            model_name="lesson",
+            name="lesson_number",
+            field=models.CharField(
+                blank=True, default="", max_length=30, verbose_name="lesson number"
+            ),
         ),
         migrations.AlterField(
-            model_name='lesson',
-            name='lesson_objectives',
-            field=models.TextField(blank=True, default='', max_length=500, verbose_name='lesson objectives'),
+            model_name="lesson",
+            name="lesson_objectives",
+            field=models.TextField(
+                blank=True, default="", max_length=500, verbose_name="lesson objectives"
+            ),
         ),
         migrations.AlterField(
-            model_name='lesson',
-            name='resources',
-            field=models.TextField(blank=True, default='', max_length=500, verbose_name='resources'),
+            model_name="lesson",
+            name="resources",
+            field=models.TextField(
+                blank=True, default="", max_length=500, verbose_name="resources"
+            ),
         ),
         migrations.AlterField(
-            model_name='lesson',
-            name='title',
-            field=models.CharField(default='', max_length=200, verbose_name='lesson title'),
+            model_name="lesson",
+            name="title",
+            field=models.CharField(
+                default="", max_length=200, verbose_name="lesson title"
+            ),
         ),
     ]
