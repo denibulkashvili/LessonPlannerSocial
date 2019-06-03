@@ -2,7 +2,7 @@
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User
 from django.db.models import Count
-from lessons.models import Lesson, Tag
+from lessons.models import Lesson, Tag, Book
 
 
 class HomePage(ListView):
@@ -12,10 +12,17 @@ class HomePage(ListView):
 
     @staticmethod
     def get_popular_tags():
-        """Gets a list of tags ordered by most amount of lessons"""
+        """Gets a list of most popular tags by lessons count"""
         all_tags = Tag.objects.all()
         ordered_tags = all_tags.annotate(num_lessons=Count('lesson')).order_by('-num_lessons')
         return ordered_tags[:5]
+
+    @staticmethod
+    def get_popular_books():
+        """Get the list of popular books by lessons count"""
+        all_books = Book.objects.all()
+        ordered_books = all_books.annotate(num_lessons=Count('lessons')).order_by('-num_lessons')
+        return ordered_books[:5]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -23,6 +30,7 @@ class HomePage(ListView):
         context["featured"] = Lesson.objects.filter(is_featured=True)
         context["num_users"] = User.objects.all().count()
         context["popular_tags"] = self.get_popular_tags()
+        context["popular_books"] = self.get_popular_books()
         return context
 
 
