@@ -27,7 +27,7 @@ class HomePage(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["latest"] = Lesson.objects.all()[:10]
-        context["featured"] = Lesson.objects.filter(is_featured=True)
+        context["featured"] = Lesson.objects.filter(is_featured=True).order_by('?')
         context["num_users"] = User.objects.all().count()
         context["popular_tags"] = self.get_popular_tags()
         context["popular_books"] = self.get_popular_books()
