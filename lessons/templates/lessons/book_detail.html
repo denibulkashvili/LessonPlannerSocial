@@ -5,20 +5,23 @@
 {% endblock %}
 
 {% block header %}
-  <h1 class="header-title">Book: {{ book.title }}</h1>
+  <h1 class="header-title">Lessons from book: {{ book.title }}</h1>
 {% endblock %}
 
 {% block content %}
-  <div class="book-detail">
-    <ul>
-      {% for lesson in book.lessons.all %}
-        <li><a href="{% url 'lessons:lesson_detail' pk=lesson.id %}">{{ lesson.title }}</a></li>
-      {% empty %}
-        <p>No lessons from this book</p>
-        {% if user.is_authenticated %}
-          <p><a href="{% url 'lessons:create' %}">Create one</a></p>
-        {% endif %}
-      {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection">
+        {% for lesson in book.lessons.all %}
+          <a href="{% url 'lessons:lesson_detail' pk=lesson.id %}" class="collection-item">{{ lesson.title }}</a>
+        {% empty %}
+          <li class="collection-item">No lessons from this book.</li>
+          {% if user.is_authenticated %}
+            <a href="{% url 'lessons:create' %}" class="collection-item">Create one</a>
+          {% endif %}
+        {% endfor %}
+        <a href="{% url 'lessons:book_list' %}" class="collection-item">All books >></a>
+      </ul>
+    </div>
   </div>
 {% endblock %}

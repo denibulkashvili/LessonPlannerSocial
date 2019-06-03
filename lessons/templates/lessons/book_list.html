@@ -9,13 +9,15 @@
 {% endblock %}
 
 {% block content %}
-  <div class="books">
-    <ul>
-      {% for book in book_list %}
-        <li><a href="{% url 'lessons:book_detail' slug=book.slug %}">{{ book.title }}</a></li>
-      {% empty %}
-        <li>No books yet.</li>
-      {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection">
+        {% for book in book_list %}
+          <a href="{% url 'lessons:book_detail' slug=book.slug %}" class="collection-item">{{ book.title }}</a>
+        {% empty %}
+          <li class="collection-item">No books yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 {% endblock %}

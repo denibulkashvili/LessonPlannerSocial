@@ -5,20 +5,23 @@
 {% endblock %}
 
 {% block header %}
-  <h1 class="header-title">Tag: {{ tag.name }}</h1>
+  <h1 class="header-title">Lesson with tag: {{ tag.name }}</h1>
 {% endblock %}
 
 {% block content %}
-  <div class="tag-detail">
-    <ul>
-      {% for lesson in tag.lessons.all %}
-        <li><a href="{% url 'lessons:lesson_detail' pk=lesson.id %}">{{ lesson.title }}</a></li>
-      {% empty %}
-        <p>No lessons with this tag</p>
-        {% if user.is_authenticated %}
-          <p><a href="{% url 'lessons:create' %}">Create one</a></p>
-        {% endif %}
-      {% endfor %}
-    </ul>
+  <div class="row">
+    <div class="col s12">
+      <ul class="collection">
+        {% for lesson in tag.lessons.all %}
+          <a href="{% url 'lessons:lesson_detail' pk=lesson.id %}" class="collection-item">{{ lesson.title }}</a>
+        {% empty %}
+          <li class="collection-item">No lessons with this tag.</li>
+          {% if user.is_authenticated %}
+            <a href="{% url 'lessons:create' %}" class="collection-item">No lessons with this tag.</a>
+          {% endif %}
+        {% endfor %}
+        <a href="{% url 'lessons:tag_list' %}" class="collection-item">All tags >></a>
+      </ul>
+    </div>
   </div>
 {% endblock %}
