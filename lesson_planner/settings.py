@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "lessons",
     "accounts",
+    "markdownify",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,6 @@ LOGOUT_REDIRECT_URL = "goodbye"
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+# Mardownify settings
+MARKDOWNIFY_BLEACH = False

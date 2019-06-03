@@ -1,3 +1,20 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+/* LESSON DETAIL */
+
 textarea.materialize-textarea {
   height: 6rem;
+}
+
+.lesson-content img {
+  max-width: 500px;
 }

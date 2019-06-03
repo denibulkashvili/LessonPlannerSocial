@@ -1,4 +1,5 @@
 {% extends 'lessons/lesson_base.html' %}
+{% load markdownify %}
 
 {% block lesson_title %}- Lesson: {{ lesson.title }} {% endblock %}
 
@@ -69,7 +70,7 @@
       <div class="card small">
         <div class="card-content">
           <span class="card-title">Lesson objectives</span>
-          <p>{{ lesson.lesson_objectives }}</p>
+          <p>{{ lesson.lesson_objectives|markdownify }}</p>
         </div>
       </div>
     </div>
@@ -77,7 +78,7 @@
       <div class="card small">
         <div class="card-content">
           <span class="card-title">Lesson resources</span>
-          <p>{{ lesson.resources }}</p>
+          <p>{{ lesson.resources|markdownify }}</p>
         </div>
       </div>
     </div>
@@ -85,7 +86,7 @@
   
   <div class="lesson-content">
     <h3>Content</h3>
-    {{ lesson.content }}
+    {{ lesson.content|markdownify }}
   </div>
   <div class="lesson-video">
     <h3>Video</h3>
