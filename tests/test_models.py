@@ -101,7 +101,7 @@ class LessonTestCase(TestCase):
         field_label = self.lesson._meta.get_field("lesson_objectives").verbose_name
         max_length = self.lesson._meta.get_field("lesson_objectives").max_length
         self.assertEqual(field_label, "lesson objectives")
-        self.assertEqual(max_length, 500)
+        self.assertEqual(max_length, 3000)
         expected_object_name = self.lesson.lesson_objectives
         self.assertEqual(expected_object_name, "Learn about stuff")
 
@@ -110,7 +110,7 @@ class LessonTestCase(TestCase):
         field_label = self.lesson._meta.get_field("resources").verbose_name
         max_length = self.lesson._meta.get_field("resources").max_length
         self.assertEqual(field_label, "resources")
-        self.assertEqual(max_length, 500)
+        self.assertEqual(max_length, 2000)
         expected_object_name = self.lesson.resources
         self.assertEqual(expected_object_name, "Flashcards")
 
@@ -148,7 +148,7 @@ class TagTestCase(TestCase):
         Tag.objects.create(name="new tag")
 
     def setUp(self):
-        self.tag = Tag.objects.get(id=1)
+        self.tag = Tag.objects.get()
 
     def test_tag_name_field_label(self):
         """Test tag name field label"""
