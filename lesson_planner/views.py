@@ -1,6 +1,7 @@
 """Views for the Lesson Planner project"""
 from django.views.generic import TemplateView, ListView
 from lessons.models import Lesson
+from django.contrib.auth.models import User
 
 
 class HomePage(ListView):
@@ -13,6 +14,7 @@ class HomePage(ListView):
         context = super().get_context_data(**kwargs)
         context["latest"] = Lesson.objects.all()[:10]
         context["featured"] = Lesson.objects.filter(is_featured=True)
+        context["num_users"] = User.objects.all().count()
         return context
     
 
