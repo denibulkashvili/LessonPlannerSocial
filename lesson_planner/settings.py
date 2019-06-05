@@ -149,8 +149,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 LOGIN_REDIRECT_URL = "hello"
 LOGOUT_REDIRECT_URL = "goodbye"
 
-# Configure Django App for Heroku.
-django_heroku.settings(locals())
+# Try to import django-heroku depending on Travis or Heroku
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
 
 # Mardownify settings
 MARKDOWNIFY_BLEACH = False
