@@ -89,7 +89,7 @@ WSGI_APPLICATION = "lesson_planner.wsgi.application"
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DOTENV_FILE = os.path.join(BASE_DIR, "lesson_planner/.env")
-if os.path.isfile(DOTENV_FILE):
+if os.path.isfile(DOTENV_FILE) or 'TRAVIS' in os.environ:
     DEFAULT_DB = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": env("DB_NAME"),

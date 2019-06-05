@@ -14,7 +14,7 @@ addons:
     - postgresql-10
     - postgresql-client-10
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'create database lesson_planner;' -U postgres
 # command to run tests
 script:
   - python manage.py collectstatic
