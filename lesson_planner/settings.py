@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "lessons",
     "accounts",
     "markdownify",
+    'analytical',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,7 @@ except ImportError:
 
 # Mardownify settings
 MARKDOWNIFY_BLEACH = False
+
+# django-analytical settings
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-141609205-1'
+

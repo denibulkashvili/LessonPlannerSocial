@@ -6,6 +6,8 @@
   <title>Lesson Planner {% block title %}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% load static %}
+  {% load analytical %}
+  {% analytical_head_top %}{% analytical_head_bottom %}
   <!-- Materialize CSS -->
   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/materialize.css' %}">
   <!-- Custom styles -->
