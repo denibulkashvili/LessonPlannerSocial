@@ -37,12 +37,40 @@ class Lesson(models.Model):
     resources = models.TextField(
         max_length=2000, verbose_name="resources", default="", blank=True
     )
-    content = models.TextField(default="", blank=False)
     video_url = models.CharField(
         max_length=2000, verbose_name="video link", default="", blank=True
     )
     embed_video_url = models.CharField(max_length=2000, editable=False, default="")
     is_featured = models.BooleanField(default=False)
+    ## CONTENT ##
+    content = models.TextField(default="", blank=False)
+    ### ESA TEMPLATES ###
+    # Arrow = E-R-S-C-A-W,
+    # Boomerang = E-A-R-S-C-A2-W,
+    # Patchwork = E-R-A-A2-S-S2-C-E2-A3-W
+    engage_time = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="")
+    engage_description = models.TextField(default="", verbose_name="engage description", blank=True)
+    engage_time2 = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="")
+    engage_description2 = models.TextField(default="", verbose_name="engage description", blank=True)
+
+    review_time = models.CharField(max_length=10, verbose_name="review time", blank=True, default="")
+    review_description = models.TextField(default="", verbose_name="review description", blank=True)
+
+    study_time = models.CharField(max_length=10, verbose_name="study time", blank=True, default="")
+    study_description = models.TextField(default="", verbose_name="study description", blank=True)
+    study_time2 = models.CharField(max_length=10, verbose_name="study time", blank=True, default="")
+    study_description2 = models.TextField(default="", verbose_name="study description", blank=True)
+    
+    activate_time = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_description = models.TextField(default="", verbose_name="activate description", blank=True)
+    activate_time2 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_description2 = models.TextField(default="", verbose_name="activate description", blank=True)
+    activate_time3 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_description3 = models.TextField(default="", verbose_name="activate description", blank=True)
+    
+    wrap_up_time = models.CharField(max_length=10, verbose_name="wrap up time", blank=True, default="")
+    wrap_up_description = models.TextField(default="", verbose_name="wrap up description", blank=True)
+    
 
     def get_embed_video_url(self):
         """Parses Youtube video url and formats a url for embed player"""
