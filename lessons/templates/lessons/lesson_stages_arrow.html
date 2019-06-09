@@ -1,0 +1,34 @@
+{% load markdownify %}
+<h3>Lesson Stages</h3>
+<ul class="collection">
+
+  <!-- Engage  -->
+  <li class="collection-item light-blue lighten-4">
+    1. Engage <span class="new badge" data-badge-caption="mins">{{ lesson.engage_time }}</span>
+  </li>
+  <li class="collection-item">{{ lesson.engage_description|markdownify }}</li>
+  
+  <!-- Review -->
+  <li class="collection-item light-blue lighten-4">
+    2. Review <span class="new badge" data-badge-caption="mins">{{ lesson.review_time }}</span>
+  </li>
+  <li class="collection-item">{{ lesson.review_description|markdownify }}</li>
+
+  <!-- Study -->
+  <li class="collection-item light-blue lighten-4">
+    3. Study<span class="new badge" data-badge-caption="mins">{{ lesson.study_time }}</span>
+  </li>
+  <li class="collection-item">{{ lesson.study_description|markdownify }}</li>
+
+  <!-- Activate -->
+  <li class="collection-item light-blue lighten-4">
+    4. Activate<span class="new badge" data-badge-caption="mins">{{ lesson.activate_time }}</span>
+  </li>
+  <li class="collection-item">{{ lesson.activate_description|markdownify }}</li>
+
+  <!-- Wrap Up -->
+  <li class="collection-item light-blue lighten-4">
+    5. Wrap Up<span class="new badge" data-badge-caption="mins">{{ lesson.wrap_up_time }}</span>
+  </li>
+  <li class="collection-item">{{ lesson.wrap_up_description|markdownify }}</li>
+</ul>

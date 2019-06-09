@@ -85,9 +85,22 @@
   </div>
   
   <div class="lesson-content">
-    <h3>Content</h3>
-    {{ lesson.content|markdownify }}
+    <!-- if base lesson -->
+    {% if lesson.base %}
+      <h3>Content</h3>
+      {{ lesson.content|markdownify }}
+    <!-- if arrow lesson -->
+    {% elif lesson.arrow %}
+      {% include 'lessons/lesson_stages_arrow.html' %}
+    <!-- if boomerang lesson -->
+    {% elif lesson.boomerang %}
+      {% include 'lessons/lesson_stages_boomerang.html' %}
+    <!-- if patchwork lesson -->
+    {% elif lesson.activate_time3 and lesson.activate_description3 %}
+      {% include 'lessons/lesson_stages_patchwork.html' %}
+    {% endif %}
   </div>
+
   <div class="lesson-video">
     <h3>Video</h3>
     {% if lesson.embed_video_url %}
