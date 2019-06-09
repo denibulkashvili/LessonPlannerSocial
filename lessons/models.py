@@ -18,13 +18,13 @@ class Lesson(models.Model):
         max_length=200, verbose_name="lesson title", blank=False, default=""
     )
     author = models.ForeignKey(
-        get_user_model(), related_name="lessons", on_delete=models.CASCADE, blank=True
+        get_user_model(), related_name="lessons", on_delete=models.CASCADE, blank=True,
     )
     created_at = models.DateField(auto_now=True)
     tags = models.ManyToManyField(
         "Tag", related_name="lessons", related_query_name="lesson", blank=True
     )
-    book = models.ForeignKey("Book", related_name="lessons", on_delete=models.CASCADE)
+    book = models.ForeignKey("Book", related_name="lessons", on_delete=models.CASCADE, blank=True)
     lesson_number = models.CharField(
         max_length=30, verbose_name="lesson number", default="", blank=True
     )
