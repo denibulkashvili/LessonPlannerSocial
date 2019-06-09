@@ -34,7 +34,14 @@
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
               <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
-              <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
+              <!-- Dropdown Trigger -->
+              <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                  Add Lesson Plan
+                  <i class="material-icons left">add</i> 
+                  <i class="material-icons right">arrow_drop_down</i>
+                </a>
+              </li>
               <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
               <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
             {% else %}
@@ -45,6 +52,17 @@
         </div>
       </nav>
 
+      <!-- Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="{% url 'lessons:create_base' %}">Basic Lesson Template</a></li>
+        <li class="divider"></li>
+        <li><a href="{% url 'lessons:create_arrow' %}">ESA Staright Arrow</a></li>
+        <li><a href="{% url 'lessons:create_boomerang' %}">ESA Boomerang</a></li>
+        <li><a href="{% url 'lessons:create_patchwork' %}">ESA Patchwork</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">More templates coming up ...</a></li>
+      </ul>
+      
       <ul class="sidenav" id="mobile-demo">
         <li> <a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'lessons:lesson_list' %}">Lessons</a></li>
@@ -54,7 +72,6 @@
         <li><a href="{% url 'about' %}">About</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
-          <li><a href="{% url 'lessons:create' %}">Add Lesson Plan</a></li>
           <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
           <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
         {% else %}
