@@ -31,6 +31,7 @@ class Lesson(models.Model):
     lesson_duration = models.IntegerField(
         verbose_name="lesson duration (in minutes)", blank=True
     )
+    ## TEXT FIELDS ##
     lesson_objectives = models.TextField(
         max_length=3000, verbose_name="lesson objectives", default="", blank=True
     )
@@ -94,7 +95,7 @@ class Lesson(models.Model):
     class Meta:
         ordering = ["-created_at"]
         indexes = [models.Index(fields=["title"])]
-        unique_together = ["author", "content"]
+        # unique_together = ["author", "content"]
 
     def __str__(self):
         return self.title
