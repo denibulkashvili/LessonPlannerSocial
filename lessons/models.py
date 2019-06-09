@@ -42,6 +42,11 @@ class Lesson(models.Model):
     )
     embed_video_url = models.CharField(max_length=2000, editable=False, default="")
     is_featured = models.BooleanField(default=False)
+    ## LESSON TEMPALTES ##
+    base = models.BooleanField(default=False)
+    arrow = models.BooleanField(default=False)
+    boomerang = models.BooleanField(default=False)
+    patchwork = models.BooleanField(default=False)
     ## CONTENT ##
     content = models.TextField(default="", blank=False)
     ### ESA TEMPLATES ###
