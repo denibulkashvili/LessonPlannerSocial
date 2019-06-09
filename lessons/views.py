@@ -13,7 +13,12 @@ from django.views.generic import (
 )
 
 from lessons.models import Book, Lesson, Tag
-from .forms import CreateLessonForm
+from .forms import (
+    CreateBaseLessonForm,
+    CreateArrowLessonForm,
+    CreateBoomerangLessonForm,
+    CreatePatchworkLessonForm,
+)
 
 User = get_user_model()  # pylint:disable=invalid-name
 
@@ -54,15 +59,59 @@ class LessonListByUser(ListView):
         return context
 
 
-class CreateLessonView(LoginRequiredMixin, CreateView):
-    """Create a lesson view"""
+class CreateBaseLessonView(LoginRequiredMixin, CreateView):
+    """Create a Base lesson view"""
 
-    form_class = CreateLessonForm
+    form_class = CreateBaseLessonForm
     model = Lesson
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
+        self.object.base = True
+        self.object.save()
+        return super().form_valid(form)
+
+class CreateArrowLessonView(LoginRequiredMixin, CreateView):
+    """Create an Arrow lesson view"""
+
+    form_class = CreateArrowLessonForm
+    model = Lesson
+    template_name_suffix = "_form_arrow"
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.arrow = True
+        self.object.save()
+        return super().form_valid(form)
+
+
+class CreateBoomerangLessonView(LoginRequiredMixin, CreateView):
+    """Create a Boomerang lesson view"""
+
+    form_class = CreateBoomerangLessonForm
+    model = Lesson
+    template_name_suffix = "_form_boomerang"
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.boomerang = True
+        self.object.save()
+        return super().form_valid(form)
+
+class CreatePatchworkLessonView(LoginRequiredMixin, CreateView):
+    """Create a Patchwork lesson view"""
+
+    form_class = CreatePatchworkLessonForm
+    model = Lesson
+    template_name_suffix = "_form_patchwork"
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.patchwork = True
         self.object.save()
         return super().form_valid(form)
 
