@@ -4,11 +4,11 @@ from urllib import parse
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.contrib.auth import get_user_model
 
 
 # Create your models here.
 # pylint:disable=arguments-differ
-from django.contrib.auth import get_user_model
 
 
 class Lesson(models.Model):
