@@ -22,16 +22,16 @@ class Lesson(models.Model):
     )
     created_at = models.DateField(auto_now=True)
     tags = models.ManyToManyField(
-        "Tag", related_name="lessons", related_query_name="lesson", blank=True
+        "Tag", related_name="lessons", related_query_name="lesson", blank=True, null=True
     )
     book = models.ForeignKey(
-        "Book", related_name="lessons", on_delete=models.CASCADE, blank=True
+        "Book", related_name="lessons", on_delete=models.CASCADE, blank=True, null=True
     )
     lesson_number = models.CharField(
         max_length=30, verbose_name="lesson number", default="", blank=True
     )
     lesson_duration = models.IntegerField(
-        verbose_name="lesson duration (in minutes)", blank=True
+        verbose_name="lesson duration (in minutes)", blank=True, null=True
     )
     ## TEXT FIELDS ##
     lesson_objectives = models.TextField(

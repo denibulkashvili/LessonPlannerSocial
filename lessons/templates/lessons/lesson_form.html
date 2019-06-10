@@ -13,19 +13,15 @@
     <form action="{% url 'lessons:create_base' %}" method="POST" class="col s12">
       {% csrf_token %}
       {{ form.non_field_errors }}
-
-      {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-            <span class="helper-text" data-error="wrong" data-success="right">{{ error }}</span>
-            {% endfor %}
-        {% endfor %}
-      {% endif %}
       
       <!-- title filed -->
       <div class="row">
         <div class="input-field col s12">
-          {{ form.title.errors }}
+          <ul>
+          {% for error in form.title.errors %}
+            <span class="helper-text red-text">{{ error }}</span>
+          {% endfor %}
+          </ul>
           <label for="{{ form.title.id_for_label }}">{{ form.title.label }} *</label>
           {{ form.title }}
           <span class="helper-text" data-error="wrong" data-success="right">{{ form.title.help_text  }}</span>
@@ -35,10 +31,18 @@
       <!-- tags field & books field -->
       <div class="row">
         <div class="input-field col s6">
+          {% for error in form.tags.errors %}
+            <span class="helper-text red-text">{{ error }}</span>
+          {% endfor %}
+
           {{ form.tags }}
           <label for="{{ form.tags.id_for_label }}">{{ form.tags.label }}</label>
         </div>
         <div class="input-field col s6">
+          {% for error in form.tags.errors %}
+            <span class="helper-text red-text">{{ error }}</span>
+          {% endfor %}
+
           {{ form.book }}
           <label for="{{ form.book.id_for_label }}">{{ form.book.label }}</label>
         </div>
@@ -47,6 +51,9 @@
       <!-- lesson number & lesson duration   -->
       <div class="row">
         <div class="input-field col s6">
+          {% for error in form.title.errors %}
+            {{ error }}
+          {% endfor %}
           <label for="{{ form.lesson_number.id_for_label }}">{{ form.lesson_number.label }}</label>
           {{ form.lesson_number }}
           <span class="helper-text" data-error="wrong" data-success="right">{{ form.lesson_number.help_text  }}</span>
@@ -61,6 +68,9 @@
       <!-- lesson objectives -->
       <div class="row">
         <div class=" input-field col s12 ">
+          {% for error in form.title.errors %}
+            {{ error }}
+          {% endfor %}
           <textarea 
             name="{{ form.lesson_objectives.html_name }}"
             id="{{ form.lesson_objectives.id_for_label }}" 
@@ -72,6 +82,9 @@
       <!-- resources -->
       <div class="row">
         <div class=" input-field col s12 ">
+          {% for error in form.title.errors %}
+            {{ error }}
+          {% endfor %}
           <textarea 
             id="{{ form.resources.id_for_label }}" 
             class="materialize-textarea"
@@ -83,6 +96,9 @@
       <!-- content -->
       <div class="row">
         <div class=" input-field col s12 ">
+          {% for error in form.content.errors %}
+            <span class="helper-text red-text" >{{ error }}</span>
+          {% endfor %}
           <textarea 
             id="{{ form.content.id_for_label }}" 
             class="materialize-textarea"
@@ -94,6 +110,9 @@
       <!-- video url -->
       <div class="row">
         <div class=" input-field col s12 ">
+          {% for error in form.title.errors %}
+            {{ error }}
+          {% endfor %}
           {{ form.video_url }}
           <label for="{{ form.video_url.id_for_label }}">{{ form.video_url.label }}</label>
         </div>

@@ -64,17 +64,29 @@
 
     <li class="collection-item">
       <i class="material-icons left">book</i>
-      <a href="{% url 'lessons:book_detail' slug=lesson.book.slug %}">{{ lesson.book }}</a>
+      {% if lesson.book %}
+        <a href="{% url 'lessons:book_detail' slug=lesson.book.slug %}">{{ lesson.book }}</a>
+      {% else %}
+        No book
+      {% endif %}
     </li>
 
     <li class="collection-item">
-        <i class="material-icons left">info</i>
+      <i class="material-icons left">info</i>
+      {% if lesson.book %}
         Lesson number: {{ lesson.lesson_number }}
+      {% else %}
+        Lesson number: -
+      {% endif %}
     </li>
 
     <li class="collection-item">
-        <i class="material-icons left">alarm</i>
+      <i class="material-icons left">alarm</i>
+      {% if lesson.book %}
         Lesson duration: {{ lesson.lesson_duration }} minutes.
+      {% else %}
+        Lesson duration: -
+      {% endif %}
     </li>
   </ul>
 
