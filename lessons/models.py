@@ -54,27 +54,27 @@ class Lesson(models.Model):
     # Arrow = E-R-S-C-A-W,
     # Boomerang = E-A-R-S-C-A2-W,
     # Patchwork = E-R-A-A2-S-S2-C-E2-A3-W
-    engage_time = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="")
+    engage_time = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="0")
     engage_description = models.TextField(default="", verbose_name="engage description", blank=True)
-    engage_time2 = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="")
+    engage_time2 = models.CharField(max_length=10, verbose_name="engage time", blank=True, default="0")
     engage_description2 = models.TextField(default="", verbose_name="engage description", blank=True)
 
-    review_time = models.CharField(max_length=10, verbose_name="review time", blank=True, default="")
+    review_time = models.CharField(max_length=10, verbose_name="review time", blank=True, default="0")
     review_description = models.TextField(default="", verbose_name="review description", blank=True)
 
-    study_time = models.CharField(max_length=10, verbose_name="study time", blank=True, default="")
+    study_time = models.CharField(max_length=10, verbose_name="study time", blank=True, default="0")
     study_description = models.TextField(default="", verbose_name="study description", blank=True)
-    study_time2 = models.CharField(max_length=10, verbose_name="study time", blank=True, default="")
+    study_time2 = models.CharField(max_length=10, verbose_name="study time", blank=True, default="0")
     study_description2 = models.TextField(default="", verbose_name="study description", blank=True)
     
-    activate_time = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_time = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="0")
     activate_description = models.TextField(default="", verbose_name="activate description", blank=True)
-    activate_time2 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_time2 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="0")
     activate_description2 = models.TextField(default="", verbose_name="activate description", blank=True)
-    activate_time3 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="")
+    activate_time3 = models.CharField(max_length=10, verbose_name="activate time", blank=True, default="0")
     activate_description3 = models.TextField(default="", verbose_name="activate description", blank=True)
     
-    wrap_up_time = models.CharField(max_length=10, verbose_name="wrap up time", blank=True, default="")
+    wrap_up_time = models.CharField(max_length=10, verbose_name="wrap up time", blank=True, default="0")
     wrap_up_description = models.TextField(default="", verbose_name="wrap up description", blank=True)
     
 
