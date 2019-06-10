@@ -9,13 +9,31 @@ urlpatterns = [
     path("id/<pk>/", views.LessonDetailView.as_view(), name="lesson_detail"),
     path("create-base/", views.CreateBaseLessonView.as_view(), name="create_base"),
     path("create-arrow/", views.CreateArrowLessonView.as_view(), name="create_arrow"),
-    path("create-boomerang/", views.CreateBoomerangLessonView.as_view(), name="create_boomerang"),
-    path("create-patchwork/", views.CreatePatchworkLessonView.as_view(), name="create_patchwork"),
+    path(
+        "create-boomerang/",
+        views.CreateBoomerangLessonView.as_view(),
+        name="create_boomerang",
+    ),
+    path(
+        "create-patchwork/",
+        views.CreatePatchworkLessonView.as_view(),
+        name="create_patchwork",
+    ),
     path("delete/<pk>/", views.DeleteLessonView.as_view(), name="delete"),
     path("update/<pk>/", views.UpdateLessonView.as_view(), name="update"),
-    path("update-arrow/<pk>/", views.UpdateArrowLessonView.as_view(), name="update_arrow"),
-    path("update-boomerang/<pk>/", views.UpdateBoomerangLessonView.as_view(), name="update_boomerang"),
-    path("update-patchwork/<pk>/", views.UpdatePatchworkLessonView.as_view(), name="update_patchwork"),
+    path(
+        "update-arrow/<pk>/", views.UpdateArrowLessonView.as_view(), name="update_arrow"
+    ),
+    path(
+        "update-boomerang/<pk>/",
+        views.UpdateBoomerangLessonView.as_view(),
+        name="update_boomerang",
+    ),
+    path(
+        "update-patchwork/<pk>/",
+        views.UpdatePatchworkLessonView.as_view(),
+        name="update_patchwork",
+    ),
     path("by/<username>/", views.LessonListByUser.as_view(), name="by_user"),
     path("with-tag/all/", views.TagListView.as_view(), name="tag_list"),
     path("with-tag/<slug:slug>/", views.TagDetailView.as_view(), name="tag_detail"),

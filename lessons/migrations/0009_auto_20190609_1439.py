@@ -5,129 +5,148 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('lessons', '0008_lesson_is_featured'),
-    ]
+    dependencies = [("lessons", "0008_lesson_is_featured")]
 
     operations = [
         migrations.AddField(
-            model_name='lesson',
-            name='activate_description',
-            field=models.TextField(default='', verbose_name='activate description'),
+            model_name="lesson",
+            name="activate_description",
+            field=models.TextField(default="", verbose_name="activate description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='activate_description2',
-            field=models.TextField(default='', verbose_name='activate description'),
+            model_name="lesson",
+            name="activate_description2",
+            field=models.TextField(default="", verbose_name="activate description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='activate_description3',
-            field=models.TextField(default='', verbose_name='activate description'),
+            model_name="lesson",
+            name="activate_description3",
+            field=models.TextField(default="", verbose_name="activate description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='activate_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='activate time'),
+            model_name="lesson",
+            name="activate_time",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="activate time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='activate_time2',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='activate time'),
+            model_name="lesson",
+            name="activate_time2",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="activate time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='activate_time3',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='activate time'),
+            model_name="lesson",
+            name="activate_time3",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="activate time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='arrow',
+            model_name="lesson", name="arrow", field=models.BooleanField(default=False)
+        ),
+        migrations.AddField(
+            model_name="lesson", name="base", field=models.BooleanField(default=False)
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="boomerang",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='base',
+            model_name="lesson",
+            name="controlled_practice_description",
+            field=models.TextField(
+                default="", verbose_name="controlled practice description"
+            ),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="controlled_practice_time",
+            field=models.CharField(
+                blank=True,
+                default="",
+                max_length=10,
+                verbose_name="controlled practice time",
+            ),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="engage_description",
+            field=models.TextField(default="", verbose_name="engage description"),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="engage_description2",
+            field=models.TextField(default="", verbose_name="engage description"),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="engage_time",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="engage time"
+            ),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="engage_time2",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="engage time"
+            ),
+        ),
+        migrations.AddField(
+            model_name="lesson",
+            name="patchwork",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='boomerang',
-            field=models.BooleanField(default=False),
+            model_name="lesson",
+            name="review_description",
+            field=models.TextField(default="", verbose_name="review description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='controlled_practice_description',
-            field=models.TextField(default='', verbose_name='controlled practice description'),
+            model_name="lesson",
+            name="review_time",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="review time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='controlled_practice_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='controlled practice time'),
+            model_name="lesson",
+            name="study_description",
+            field=models.TextField(default="", verbose_name="study description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='engage_description',
-            field=models.TextField(default='', verbose_name='engage description'),
+            model_name="lesson",
+            name="study_description2",
+            field=models.TextField(default="", verbose_name="study description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='engage_description2',
-            field=models.TextField(default='', verbose_name='engage description'),
+            model_name="lesson",
+            name="study_time",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="study time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='engage_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='engage time'),
+            model_name="lesson",
+            name="study_time2",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="study time"
+            ),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='engage_time2',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='engage time'),
+            model_name="lesson",
+            name="wrap_up_description",
+            field=models.TextField(default="", verbose_name="wrap up description"),
         ),
         migrations.AddField(
-            model_name='lesson',
-            name='patchwork',
-            field=models.BooleanField(default=False),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='review_description',
-            field=models.TextField(default='', verbose_name='review description'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='review_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='review time'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='study_description',
-            field=models.TextField(default='', verbose_name='study description'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='study_description2',
-            field=models.TextField(default='', verbose_name='study description'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='study_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='study time'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='study_time2',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='study time'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='wrap_up_description',
-            field=models.TextField(default='', verbose_name='wrap up description'),
-        ),
-        migrations.AddField(
-            model_name='lesson',
-            name='wrap_up_time',
-            field=models.CharField(blank=True, default='', max_length=10, verbose_name='wrap up time'),
+            model_name="lesson",
+            name="wrap_up_time",
+            field=models.CharField(
+                blank=True, default="", max_length=10, verbose_name="wrap up time"
+            ),
         ),
     ]

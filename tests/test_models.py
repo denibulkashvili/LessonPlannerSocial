@@ -6,6 +6,7 @@ from accounts.models import User
 # Create your tests here.
 class LessonTestCase(TestCase):
     """Tests Lesson model"""
+
     @classmethod
     def setUpTestData(cls):
         """

@@ -5,6 +5,7 @@ from .models import Lesson
 
 class CreateBaseLessonForm(forms.ModelForm):
     """Form to create new Base lesson plans"""
+
     class Meta:
         model = Lesson
         fields = (
@@ -18,6 +19,7 @@ class CreateBaseLessonForm(forms.ModelForm):
             "content",
             "video_url",
         )
+
 
 class CreateArrowLessonForm(forms.ModelForm):
     """Form to create new ESA Arrow lesson plans"""
@@ -75,6 +77,7 @@ class CreateBoomerangLessonForm(forms.ModelForm):
             "wrap_up_time",
             "wrap_up_description",
         )
+
 
 class CreatePatchworkLessonForm(forms.ModelForm):
     """Form to create new ESA Patchwork lesson plans"""

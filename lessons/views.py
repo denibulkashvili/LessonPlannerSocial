@@ -36,13 +36,14 @@ class LessonDetailView(DetailView):
 
     model = Lesson
 
+
 class LessonListByUser(ListView):
     """Lesson list by user view"""
 
     model = Lesson
     # template_name = "user_lesson_list.html"
 
-    def get_queryset(self): # pylint:disable=attribute-defined-outside-init
+    def get_queryset(self):  # pylint:disable=attribute-defined-outside-init
         try:
             self.lesson_author = User.objects.prefetch_related("lessons").get(
                 username__iexact=self.kwargs.get("username")
@@ -72,6 +73,7 @@ class CreateBaseLessonView(LoginRequiredMixin, CreateView):
         self.object.save()
         return super().form_valid(form)
 
+
 class CreateArrowLessonView(LoginRequiredMixin, CreateView):
     """Create an Arrow lesson view"""
 
@@ -100,6 +102,7 @@ class CreateBoomerangLessonView(LoginRequiredMixin, CreateView):
         self.object.boomerang = True
         self.object.save()
         return super().form_valid(form)
+
 
 class CreatePatchworkLessonView(LoginRequiredMixin, CreateView):
     """Create a Patchwork lesson view"""
@@ -151,7 +154,7 @@ class UpdateLessonView(UpdateView):
 
 class UpdateArrowLessonView(UpdateView):
     """Update Arrow lesson view"""
-    
+
     model = Lesson
     fields = (
         "title",
@@ -176,12 +179,13 @@ class UpdateArrowLessonView(UpdateView):
     )
     template_name_suffix = "_update_arrow_form"
 
+
 class UpdateBoomerangLessonView(UpdateView):
     """Update Boomerang lesson view"""
-    
+
     model = Lesson
     fields = (
-         "title",
+        "title",
         "tags",
         "book",
         "lesson_number",
@@ -204,6 +208,7 @@ class UpdateBoomerangLessonView(UpdateView):
         "wrap_up_description",
     )
     template_name_suffix = "_update_boomerang_form"
+
 
 class UpdatePatchworkLessonView(UpdateView):
     """Update Patchwork lesson view"""
@@ -237,6 +242,7 @@ class UpdatePatchworkLessonView(UpdateView):
         "wrap_up_description",
     )
     template_name_suffix = "_update_patchwork_form"
+
 
 class TagListView(ListView):
     """Tag list view"""

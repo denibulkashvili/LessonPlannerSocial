@@ -1,8 +1,10 @@
 """Module for testing forms"""
 from django.test import TestCase
+
 # from django.test import Client
 from accounts.forms import UserCreateForm
 from accounts.models import User
+
 
 class UserFormTest(TestCase):
     """Tests User create form"""

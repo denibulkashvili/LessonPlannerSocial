@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "lessons",
     "accounts",
     "markdownify",
-    'analytical',
+    "analytical",
 ]
 
 MIDDLEWARE = [
@@ -90,7 +90,7 @@ WSGI_APPLICATION = "lesson_planner.wsgi.application"
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DOTENV_FILE = os.path.join(BASE_DIR, "lesson_planner/.env")
-if os.path.isfile(DOTENV_FILE) or 'TRAVIS' in os.environ:
+if os.path.isfile(DOTENV_FILE) or "TRAVIS" in os.environ:
     DEFAULT_DB = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": env("DB_NAME"),
@@ -153,6 +153,7 @@ LOGOUT_REDIRECT_URL = "goodbye"
 try:
     # Configure Django App for Heroku.
     import django_heroku
+
     django_heroku.settings(locals())
 except ImportError:
     found = False
@@ -161,5 +162,4 @@ except ImportError:
 MARKDOWNIFY_BLEACH = False
 
 # django-analytical settings
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-141609205-1'
-
+GOOGLE_ANALYTICS_PROPERTY_ID = "UA-141609205-1"
