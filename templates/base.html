@@ -21,7 +21,6 @@
   
   <main>
     <header>
-  
       <nav>
         <div class="nav-wrapper">
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -72,6 +71,32 @@
         <li><a href="{% url 'about' %}">About</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
+          <li>
+            <ul class="collapsible">
+              <li>
+                <a href="#!"> 
+                <div class="collapsible-header">
+                    Add Lesson Plan
+                  <i class="material-icons right">arrow_drop_down</i>
+                </div>
+                </a>
+                <div class="collapsible-body">
+                  <span>
+                    <ul>  
+                      <li class="divider"></li>
+                      <li><a href="{% url 'lessons:create_base' %}">Basic Lesson Template</a></li>
+                      <li><a href="{% url 'lessons:create_arrow' %}">ESA Staright Arrow</a></li>
+                      <li><a href="{% url 'lessons:create_boomerang' %}">ESA Boomerang</a></li>
+                      <li><a href="{% url 'lessons:create_patchwork' %}">ESA Patchwork</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#!">More templates coming up ...</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                  </span>
+                </div>          
+              </li>
+            </ul>
+          </li>
           <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
           <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
         {% else %}
