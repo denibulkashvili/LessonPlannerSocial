@@ -22,7 +22,7 @@ class Lesson(models.Model):
     )
     created_at = models.DateField(auto_now=True)
     tags = models.ManyToManyField(
-        "Tag", related_name="lessons", related_query_name="lesson", blank=True, null=True
+        "Tag", related_name="lessons", related_query_name="lesson", blank=True
     )
     book = models.ForeignKey(
         "Book", related_name="lessons", on_delete=models.CASCADE, blank=True, null=True
