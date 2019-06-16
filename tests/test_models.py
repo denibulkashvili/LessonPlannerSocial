@@ -1,7 +1,7 @@
 """Module for testing models"""
 from django.test import TestCase
 from lessons.models import Lesson, Tag, Book
-from accounts.models import User
+import tests.testing_data as test_data
 
 # Create your tests here.
 class LessonTestCase(TestCase):
@@ -12,23 +12,9 @@ class LessonTestCase(TestCase):
         """
         Run once to set up non-modified data for all class methods
         """
-        user = User.objects.create_user(
-            username="test_model_user",
-            email="test_model_user@mail.com",
-            password="test123",
-        )
-        book = Book.objects.create(title="Test Book")
-        Lesson.objects.create(
-            title="Food lesson",
-            book=book,
-            author=user,
-            lesson_number="33",
-            lesson_duration=90,
-            lesson_objectives="Learn about stuff",
-            resources="Flashcards",
-            content="1. Warm up",
-            video_url="https://www.youtube.com/watch?v=tVlcKp3bWH8",
-        )
+        user = test_data.create_user()
+        book = test_data.create_book()
+        test_data.create_lesson(user, book)
 
     def setUp(self):
         self.lesson = Lesson.objects.get(id=1)
@@ -146,7 +132,7 @@ class TagTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        Tag.objects.create(name="new tag")
+        test_data.create_tag()
 
     def setUp(self):
         self.tag = Tag.objects.get()
@@ -179,7 +165,7 @@ class BookTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        Book.objects.create(title="New Book Title")
+        test_data.create_book()
 
     def setUp(self):
         self.book = Book.objects.get(id=1)
