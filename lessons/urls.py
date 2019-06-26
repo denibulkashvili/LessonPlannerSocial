@@ -7,7 +7,7 @@ app_name = "lessons"
 urlpatterns = [
     path("all/", views.LessonListView.as_view(), name="lesson_list"),
     path("id/<pk>/", views.LessonDetailView.as_view(), name="lesson_detail"),
-    path("create-base/", views.CreateBaseLessonView.as_view(), name="create_base"),
+    path("create-basic/", views.CreateBasicLessonView.as_view(), name="create_basic"),
     path("create-arrow/", views.CreateArrowLessonView.as_view(), name="create_arrow"),
     path(
         "create-boomerang/",

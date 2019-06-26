@@ -1,20 +1,27 @@
 {% extends 'lessons/lesson_base.html' %}
 
-{% block head %}{% endblock %}
-
 {% block lesson_title %}- New Lesson Plan {% endblock %}
 
-{% block lesson_header %}
-  Add a New Lesson Plan
-{% endblock %}
+{% block lesson_header %}{% endblock %}
 
 {% block lesson_content %}
   <div class="row">
-    <form action="{% url 'lessons:create_base' %}" method="POST" class="col s12">
+    <form action="{% block lesson_form_action_url %} {% endblock %}" method="POST" class="col s12">
       {% csrf_token %}
       {{ form.non_field_errors }}
       
-      <!-- title filed -->
+
+      <!-- TODO: CONTINUE REFACTORING FROM HERE -->
+      <!-- title
+      header 
+      action_url
+      shared files
+      special fields
+        special fields
+        include's
+          folder: lesson_fields -->
+
+      <!-- title field -->
       <div class="row">
         <div class="input-field col s12">
           <ul>
@@ -93,19 +100,8 @@
         </div>
       </div>
 
-      <!-- content -->
-      <div class="row">
-        <div class=" input-field col s12 ">
-          {% for error in form.content.errors %}
-            <span class="helper-text red-text" >{{ error }}</span>
-          {% endfor %}
-          <textarea 
-            id="{{ form.content.id_for_label }}" 
-            class="materialize-textarea"
-            name="{{ form.content.html_name }}">{{ form.content.value }}</textarea>
-          <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
-        </div>
-      </div>
+      <!-- Lesson plan type specfic fileds -->
+      {% block lesson_specific_fields %}{% endblock %}
 
       <!-- video url -->
       <div class="row">

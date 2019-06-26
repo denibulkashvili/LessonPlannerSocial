@@ -1,0 +1,27 @@
+{% extends 'lessons/forms/lesson_form_base.html' %}
+
+{% block lesson_header %}Add New Basic Lesson Plan {% endblock %}
+
+{% block lesson_form_action_url %}{% url 'lessons:create_basic' %}{% endblock %}
+
+<!-- TODO: Update urls and views to create_basic -->
+
+<!-- Lesson plan type specfic fileds -->
+{% block lesson_specific_fields %}
+
+<!-- content -->
+<div class="row">
+  <div class=" input-field col s12 ">
+    {% for error in form.content.errors %}
+      <span class="helper-text red-text" >{{ error }}</span>
+    {% endfor %}
+    <textarea 
+      id="{{ form.content.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.content.html_name }}">{{ form.content.value }}</textarea>
+    <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+  </div>
+</div>
+
+{% endblock %}
+

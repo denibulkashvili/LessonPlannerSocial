@@ -1,0 +1,165 @@
+{% extends 'lessons/forms/lesson_form_base.html' %}
+
+{% block lesson_header %}Add New ESA Patchwork Lesson Plan {% endblock %}
+
+{% block lesson_form_action_url %}{% url 'lessons:create_patchwork' %}{% endblock %}
+
+<!-- TODO: Update urls and views to create_basic -->
+
+<!-- Lesson plan type specfic fileds -->
+{% block lesson_specific_fields %}
+
+<!-- Engage -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>1. Engage stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.engage_time.id_for_label }}">{{ form.engage_time.label }}</label>
+    {{ form.engage_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.engage_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.engage_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.engage_description.html_name }}">{{ form.engage_description.value }}</textarea>
+    <label for="{{ form.engage_description.id_for_label }}">{{ form.engage_description.label }}</label>
+  </div>
+</div>
+
+<!-- Review -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>2. Review stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.review_time.id_for_label }}">{{ form.review_time.label }}</label>
+    {{ form.review_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.review_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.review_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.review_description.html_name }}">{{ form.review_description.value }}</textarea>
+    <label for="{{ form.review_description.id_for_label }}">{{ form.review_description.label }}</label>
+  </div>
+</div>
+
+<!-- Activate -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>3. Activate 1 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.activate_time.id_for_label }}">{{ form.activate_time.label }}</label>
+    {{ form.activate_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.activate_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.activate_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.activate_description.html_name }}">{{ form.activate_description.value }}</textarea>
+    <label for="{{ form.activate_description.id_for_label }}">{{ form.activate_description.label }}</label>
+  </div>
+</div>
+
+<!-- Activate 2 -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>4. Activate 2 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.activate_time2.id_for_label }}">{{ form.activate_time2.label }}</label>
+    {{ form.activate_time2 }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.activate_time2.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.activate_description2.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.activate_description2.html_name }}">{{ form.activate_description2.value }}</textarea>
+    <label for="{{ form.activate_description2.id_for_label }}">{{ form.activate_description2.label }}</label>
+  </div>
+</div>
+
+<!-- Study -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>5. Study stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.study_time.id_for_label }}">{{ form.study_time.label }}</label>
+    {{ form.study_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.study_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.study_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.study_description.html_name }}">{{ form.study_description.value }}</textarea>
+    <label for="{{ form.study_description.id_for_label }}">{{ form.study_description.label }}</label>
+  </div>
+</div>
+
+<!-- Engage 2 -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>6. Engage 2 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.engage_time2.id_for_label }}">{{ form.engage_time2.label }}</label>
+    {{ form.engage_time2 }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.engage_time2.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.engage_description2.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.engage_description2.html_name }}">{{ form.engage_description2.value }}</textarea>
+    <label for="{{ form.engage_description2.id_for_label }}">{{ form.engage_description2.label }}</label>
+  </div>
+</div>
+
+<!-- Activate 3 -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>7. Activate 3 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.activate_time3.id_for_label }}">{{ form.activate_time3.label }}</label>
+    {{ form.activate_time3 }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.activate_time3.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.activate_description3.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.activate_description3.html_name }}">{{ form.activate_description3.value }}</textarea>
+    <label for="{{ form.activate_description3.id_for_label }}">{{ form.activate_description3.label }}</label>
+  </div>
+</div>
+
+<!-- Wrap up -->
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>8. Wrap up stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.wrap_up_time.id_for_label }}">{{ form.wrap_up_time.label }}</label>
+    {{ form.wrap_up_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.wrap_up_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.wrap_up_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.wrap_up_description.html_name }}">{{ form.wrap_up_description.value }}</textarea>
+    <label for="{{ form.wrap_up_description.id_for_label }}">{{ form.wrap_up_description.label }}</label>
+  </div>
+</div>
+
+{% endblock %}
+

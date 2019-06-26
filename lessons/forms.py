@@ -3,8 +3,8 @@ from django import forms
 from .models import Lesson
 
 
-class CreateBaseLessonForm(forms.ModelForm):
-    """Form to create new Base lesson plans"""
+class CreateBasicLessonForm(forms.ModelForm):
+    """Form to create new Basic lesson plans"""
 
     class Meta:
         model = Lesson

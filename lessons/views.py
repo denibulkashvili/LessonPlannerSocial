@@ -14,7 +14,7 @@ from django.views.generic import (
 
 from lessons.models import Book, Lesson, Tag
 from .forms import (
-    CreateBaseLessonForm,
+    CreateBasicLessonForm,
     CreateArrowLessonForm,
     CreateBoomerangLessonForm,
     CreatePatchworkLessonForm,
@@ -60,11 +60,12 @@ class LessonListByUser(ListView):
         return context
 
 
-class CreateBaseLessonView(LoginRequiredMixin, CreateView):
-    """Create a Base lesson view"""
+class CreateBasicLessonView(LoginRequiredMixin, CreateView):
+    """Create a Basic lesson view"""
 
-    form_class = CreateBaseLessonForm
+    form_class = CreateBasicLessonForm
     model = Lesson
+    template_name = "lessons/forms/lesson_form_basic.html"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -79,7 +80,7 @@ class CreateArrowLessonView(LoginRequiredMixin, CreateView):
 
     form_class = CreateArrowLessonForm
     model = Lesson
-    template_name_suffix = "_form_arrow"
+    template_name = "lessons/forms/lesson_form_arrow.html"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -94,7 +95,7 @@ class CreateBoomerangLessonView(LoginRequiredMixin, CreateView):
 
     form_class = CreateBoomerangLessonForm
     model = Lesson
-    template_name_suffix = "_form_boomerang"
+    template_name = "lessons/forms/lesson_form_boomerang.html"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -109,7 +110,7 @@ class CreatePatchworkLessonView(LoginRequiredMixin, CreateView):
 
     form_class = CreatePatchworkLessonForm
     model = Lesson
-    template_name_suffix = "_form_patchwork"
+    template_name = "lessons/forms/lesson_form_patchwork.html"
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
