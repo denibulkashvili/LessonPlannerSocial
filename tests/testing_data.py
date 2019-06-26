@@ -6,18 +6,19 @@ from accounts.models import User
 def create_user():
     """Creates a test user"""
     return User.objects.create_user(
-        username="test_model_user",
-        email="test_model_user@mail.com",
-        password="test123",
+        username="test_model_user", email="test_model_user@mail.com", password="test123"
     )
+
 
 def create_book():
     """Creates a test book"""
     return Book.objects.create(title="Test Book")
 
+
 def create_tag():
     """Creates a test tag"""
     return Tag.objects.create(name="test tag")
+
 
 def create_lesson(user, book):
     """Creates a test lesson"""

@@ -156,7 +156,7 @@ try:
 
     django_heroku.settings(locals())
 except ImportError:
-    found = False #pylint:disable=invalid-name
+    found = False  # pylint:disable=invalid-name
 
 # Mardownify settings
 MARKDOWNIFY_BLEACH = False

@@ -71,15 +71,21 @@ class LessonListByUserTests(TestCase):
 
     def test_lesson_list_by_user_page_status_code(self):
         """Tests if LessonListByUser view response status code is 200"""
-        response = self.client.get(reverse("lessons:by_user", kwargs={"username": self.user.username}))
+        response = self.client.get(
+            reverse("lessons:by_user", kwargs={"username": self.user.username})
+        )
         self.assertEqual(response.status_code, 200)
-    
+
     def test_lesson_list_by_user_page_uses_correct_template(self):
         """Tests if LessonListByUser view uses correct template"""
-        response = self.client.get(reverse("lessons:by_user", kwargs={"username": self.user.username}))
-        self.assertTemplateUsed(response, 'lessons/lesson_list.html')
+        response = self.client.get(
+            reverse("lessons:by_user", kwargs={"username": self.user.username})
+        )
+        self.assertTemplateUsed(response, "lessons/lesson_list.html")
 
     def test_lesson_list_by_user_page_contains_lesson_by_this_user(self):
         """Test if LessonListByUser view contains a lesson create by this user"""
-        response = self.client.get(reverse("lessons:by_user", kwargs={"username": self.user.username}))
+        response = self.client.get(
+            reverse("lessons:by_user", kwargs={"username": self.user.username})
+        )
         self.assertContains(response, self.user.username)
