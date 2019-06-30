@@ -1,8 +1,8 @@
 {% extends 'lessons/forms/lesson_form_base.html' %}
 
-{% block lesson_header %}Add New ESA Straight Arrow Lesson Plan {% endblock %}
+{% block lesson_header %}Update ESA Straight Arrow Lesson Plan {% endblock %}
 
-{% block lesson_form_action_url %}{% url 'lessons:create_arrow' %}{% endblock %}
+{% block lesson_form_action_url %}{% url 'lessons:update_arrow' pk=lesson.id %}{% endblock %}
 
 
 <!-- Lesson plan type specfic fileds -->

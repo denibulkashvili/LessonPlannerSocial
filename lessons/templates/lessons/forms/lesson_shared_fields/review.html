@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>2. Review stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.review_time.id_for_label }}">{{ form.review_time.label }}</label>
+    {{ form.review_time }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.review_time.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.review_description.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.review_description.html_name }}">{{ form.review_description.value }}</textarea>
+    <label for="{{ form.review_description.id_for_label }}">{{ form.review_description.label }}</label>
+  </div>
+</div>

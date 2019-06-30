@@ -20,7 +20,7 @@ urlpatterns = [
         name="create_patchwork",
     ),
     path("delete/<pk>/", views.DeleteLessonView.as_view(), name="delete"),
-    path("update/<pk>/", views.UpdateLessonView.as_view(), name="update"),
+    path("update/<pk>/", views.UpdateLessonView.as_view(), name="update_basic"),
     path(
         "update-arrow/<pk>/", views.UpdateArrowLessonView.as_view(), name="update_arrow"
     ),

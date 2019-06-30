@@ -136,7 +136,7 @@ class DeleteLessonView(LoginRequiredMixin, DeleteView):
 
 
 class UpdateLessonView(UpdateView):
-    """Update lesson view"""
+    """Update Basic lesson view"""
 
     model = Lesson
     fields = (
@@ -150,7 +150,7 @@ class UpdateLessonView(UpdateView):
         "content",
         "video_url",
     )
-    template_name_suffix = "_update_form"
+    template_name = "lessons/forms/update_forms/lesson_update_basic.html"
 
 
 class UpdateArrowLessonView(UpdateView):
@@ -178,7 +178,7 @@ class UpdateArrowLessonView(UpdateView):
         "wrap_up_time",
         "wrap_up_description",
     )
-    template_name_suffix = "_update_arrow_form"
+    template_name = "lessons/forms/update_forms/lesson_update_arrow.html"
 
 
 class UpdateBoomerangLessonView(UpdateView):
@@ -208,7 +208,7 @@ class UpdateBoomerangLessonView(UpdateView):
         "wrap_up_time",
         "wrap_up_description",
     )
-    template_name_suffix = "_update_boomerang_form"
+    template_name = "lessons/forms/update_forms/lesson_update_boomerang.html"
 
 
 class UpdatePatchworkLessonView(UpdateView):
@@ -242,7 +242,7 @@ class UpdatePatchworkLessonView(UpdateView):
         "wrap_up_time",
         "wrap_up_description",
     )
-    template_name_suffix = "_update_patchwork_form"
+    template_name = "lessons/forms/update_forms/lesson_update_patchwork.html"
 
 
 class TagListView(ListView):

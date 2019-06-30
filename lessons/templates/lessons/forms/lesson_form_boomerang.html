@@ -8,118 +8,22 @@
 {% block lesson_specific_fields %}
 
 <!-- Engage -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>1. Engage stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.engage_time.id_for_label }}">{{ form.engage_time.label }}</label>
-    {{ form.engage_time }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.engage_time.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.engage_description.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.engage_description.html_name }}">{{ form.engage_description.value }}</textarea>
-    <label for="{{ form.engage_description.id_for_label }}">{{ form.engage_description.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/engage.html' %}
 
 <!-- Activate -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>2. Activate stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.activate_time.id_for_label }}">{{ form.activate_time.label }}</label>
-    {{ form.activate_time }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.activate_time.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.activate_description.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.activate_description.html_name }}">{{ form.activate_description.value }}</textarea>
-    <label for="{{ form.activate_description.id_for_label }}">{{ form.activate_description.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/activate.html' %}
 
 <!-- Review -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>3. Review stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.review_time.id_for_label }}">{{ form.review_time.label }}</label>
-    {{ form.review_time }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.review_time.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.review_description.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.review_description.html_name }}">{{ form.review_description.value }}</textarea>
-    <label for="{{ form.review_description.id_for_label }}">{{ form.review_description.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/review.html' %}
 
 <!-- Study -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>4. Study stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.study_time.id_for_label }}">{{ form.study_time.label }}</label>
-    {{ form.study_time }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.study_time.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.study_description.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.study_description.html_name }}">{{ form.study_description.value }}</textarea>
-    <label for="{{ form.study_description.id_for_label }}">{{ form.study_description.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/study.html' %}
 
 <!-- Activate 2 -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>5. Activate 2 stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.activate_time2.id_for_label }}">{{ form.activate_time2.label }}</label>
-    {{ form.activate_time2 }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.activate_time2.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.activate_description2.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.activate_description2.html_name }}">{{ form.activate_description2.value }}</textarea>
-    <label for="{{ form.activate_description2.id_for_label }}">{{ form.activate_description2.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/activate2.html' %}
 
 <!-- Wrap up -->
-<div class="row">
-  <div class="input-field col s12 m6 center"><h5>6. Wrap up stage</h5></div>
-  <div class="input-field col s12 m6">
-    <label for="{{ form.wrap_up_time.id_for_label }}">{{ form.wrap_up_time.label }}</label>
-    {{ form.wrap_up_time }}
-    <span class="helper-text" data-error="wrong" data-success="right">
-      {{ form.wrap_up_time.help_text  }}
-    </span>
-  </div>
-  <div class="input-field col s12">
-    <textarea 
-      id="{{ form.wrap_up_description.id_for_label }}" 
-      class="materialize-textarea"
-      name="{{ form.wrap_up_description.html_name }}">{{ form.wrap_up_description.value }}</textarea>
-    <label for="{{ form.wrap_up_description.id_for_label }}">{{ form.wrap_up_description.label }}</label>
-  </div>
-</div>
+{% include 'lessons/forms/lesson_shared_fields/wrap_up.html' %}
 
 {% endblock %}
 

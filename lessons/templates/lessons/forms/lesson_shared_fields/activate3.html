@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>7. Activate 3 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.activate_time3.id_for_label }}">{{ form.activate_time3.label }}</label>
+    {{ form.activate_time3 }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.activate_time3.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.activate_description3.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.activate_description3.html_name }}">{{ form.activate_description3.value }}</textarea>
+    <label for="{{ form.activate_description3.id_for_label }}">{{ form.activate_description3.label }}</label>
+  </div>
+</div>

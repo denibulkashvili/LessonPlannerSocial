@@ -1,0 +1,12 @@
+<div class="row">
+  <div class=" input-field col s12 ">
+    {% for error in form.content.errors %}
+      <span class="helper-text red-text" >{{ error }}</span>
+    {% endfor %}
+    <textarea 
+      id="{{ form.content.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.content.html_name }}">{{ form.content.value }}</textarea>
+    <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+  </div>
+</div>

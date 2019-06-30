@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="input-field col s12 m6 center"><h5>6. Engage 2 stage</h5></div>
+  <div class="input-field col s12 m6">
+    <label for="{{ form.engage_time2.id_for_label }}">{{ form.engage_time2.label }}</label>
+    {{ form.engage_time2 }}
+    <span class="helper-text" data-error="wrong" data-success="right">
+      {{ form.engage_time2.help_text  }}
+    </span>
+  </div>
+  <div class="input-field col s12">
+    <textarea 
+      id="{{ form.engage_description2.id_for_label }}" 
+      class="materialize-textarea"
+      name="{{ form.engage_description2.html_name }}">{{ form.engage_description2.value }}</textarea>
+    <label for="{{ form.engage_description2.id_for_label }}">{{ form.engage_description2.label }}</label>
+  </div>
+</div>

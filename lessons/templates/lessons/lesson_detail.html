@@ -12,7 +12,7 @@
     {% if user.is_authenticated and user == lesson.author %}
       <div class="lesson-buttons center">
         {% if lesson.base %}
-          <a class="waves-effect waves-light btn" href="{% url 'lessons:update' pk=lesson.id %}">
+          <a class="waves-effect waves-light btn" href="{% url 'lessons:update_basic' pk=lesson.id %}">
             <i class="material-icons left">edit</i>Edit
           </a>
         {% elif lesson.arrow %}
