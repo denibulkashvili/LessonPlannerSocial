@@ -4,36 +4,42 @@
 {% block lesson_title %}- Lesson: {{ lesson.title }} {% endblock %}
 
 {% block lesson_header %}
-  Lesson: {{ lesson.title }} 
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Lesson:</span>
+      <p>{{ lesson.title }}</p>
+    </div>
+    <div class="card-action">
+      {% if user.is_authenticated and user == lesson.author %}
+        <div class="lesson-buttons center">
+          {% if lesson.base %}
+            <a class="waves-effect waves-light btn" href="{% url 'lessons:update_basic' pk=lesson.id %}">
+              <i class="material-icons left">edit</i>Edit
+            </a>
+          {% elif lesson.arrow %}
+            <a class="waves-effect waves-light btn" href="{% url 'lessons:update_arrow' pk=lesson.id %}">
+              <i class="material-icons left">edit</i>Edit
+            </a>
+          {% elif lesson.boomerang %}
+            <a class="waves-effect waves-light btn" href="{% url 'lessons:update_boomerang' pk=lesson.id %}">
+              <i class="material-icons left">edit</i>Edit
+            </a>
+          {% elif lesson.patchwork %}
+            <a class="waves-effect waves-light btn" href="{% url 'lessons:update_patchwork' pk=lesson.id %}">
+              <i class="material-icons left">edit</i>Edit
+            </a>
+          {% endif %}
+          <a class="waves-effect waves-light btn" href="{% url 'lessons:delete' pk=lesson.id %}">
+              <i class="material-icons left">delete</i>Delete
+          </a>
+        </div>  
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
 
 {% block lesson_content %}
-  <div class="lesson-actions">
-    {% if user.is_authenticated and user == lesson.author %}
-      <div class="lesson-buttons center">
-        {% if lesson.base %}
-          <a class="waves-effect waves-light btn" href="{% url 'lessons:update_basic' pk=lesson.id %}">
-            <i class="material-icons left">edit</i>Edit
-          </a>
-        {% elif lesson.arrow %}
-          <a class="waves-effect waves-light btn" href="{% url 'lessons:update_arrow' pk=lesson.id %}">
-            <i class="material-icons left">edit</i>Edit
-          </a>
-        {% elif lesson.boomerang %}
-          <a class="waves-effect waves-light btn" href="{% url 'lessons:update_boomerang' pk=lesson.id %}">
-            <i class="material-icons left">edit</i>Edit
-          </a>
-        {% elif lesson.patchwork %}
-          <a class="waves-effect waves-light btn" href="{% url 'lessons:update_patchwork' pk=lesson.id %}">
-            <i class="material-icons left">edit</i>Edit
-          </a>
-        {% endif %}
-        <a class="waves-effect waves-light btn" href="{% url 'lessons:delete' pk=lesson.id %}">
-            <i class="material-icons left">delete</i>Delete
-        </a>
-      </div>  
-    {% endif %}
-  </div>
+  
 
   <h3>Information</h3>
 
