@@ -1,0 +1,144 @@
+<header>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li> <a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'lessons:lesson_list' %}">All Lessons</a></li>
+          <li><a href="{% url 'lessons:tag_list' %}">Tags</a></li>
+          <li><a href="{% url 'lessons:book_list' %}">Books</a></li>
+          <li><a href="{% url 'games' %}">Games</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
+            <!-- Dropdown Trigger -->
+            <li>
+              <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                Add Lesson Plan
+                <i class="material-icons left">add</i> 
+                <i class="material-icons right">arrow_drop_down</i>
+              </a>
+            </li>
+            <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="{% url 'lessons:create_basic' %}">1. Basic Lesson Template</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'lessons:create_arrow' %}">2. ESA Staright Arrow</a></li>
+      <li><a href="{% url 'lessons:create_boomerang' %}">3. ESA Boomerang</a></li>
+      <li><a href="{% url 'lessons:create_patchwork' %}">4. ESA Patchwork</a></li>
+      <li class="divider"></li>
+      <li>
+        <a class="waves-effect waves-light modal-trigger" href="#lesson-types-help">
+          <i class="material-icons right">help_outline</i>
+          Lesson Types Help
+        </a>
+      </li>
+      <li class="divider"></li>
+      <li><a href="#!">More templates coming up ...</a></li>
+    </ul>
+    
+    <ul class="sidenav" id="mobile-demo">
+      <li> <a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'lessons:lesson_list' %}">Lessons</a></li>
+      <li><a href="{% url 'lessons:tag_list' %}">Tags</a></li>
+      <li><a href="{% url 'lessons:book_list' %}">Books</a></li>
+      <li><a href="{% url 'games' %}">Games</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'lessons:by_user' username=user.username %}">My Lessons</a></li>
+        <li>
+          <ul class="collapsible">
+            <li>
+              <a href="#!"> 
+              <div class="collapsible-header">
+                  Add Lesson Plan
+                <i class="material-icons right">arrow_drop_down</i>
+              </div>
+              </a>
+              <div class="collapsible-body">
+                <span>
+                  <ul>  
+                    <li class="divider"></li>
+                    <li><a href="{% url 'lessons:create_basic' %}">1. Basic Lesson Template</a></li>
+                    <li><a href="{% url 'lessons:create_arrow' %}">2. ESA Staright Arrow</a></li>
+                    <li><a href="{% url 'lessons:create_boomerang' %}">3. ESA Boomerang</a></li>
+                    <li><a href="{% url 'lessons:create_patchwork' %}">4. ESA Patchwork</a></li>
+                    <li class="divider"></li>
+                    <li>
+                      <a class="waves-effect waves-light modal-trigger" href="#lesson-types-help">
+                        <i class="material-icons right">help_outline</i>
+                        Lesson Types Help
+                      </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#!">More templates coming up ...</a></li>
+                    <li class="divider"></li>
+                  </ul>
+                </span>
+              </div>          
+            </li>
+          </ul>
+        </li>
+        <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+      {% endif %}
+    </ul>
+
+    <!-- Lesson Types Help Modal -->
+    <div id="lesson-types-help" class="modal">
+      <div class="modal-content">
+        <h3>Lesson Types</h3>
+        <h4>Basic Lesson</h4>
+        <p>Generic lesson type that is not limited to a specific lesson structure.</p>
+        <h4>ESA Methodology</h4>
+        <p>ESA is a common methodology that stands for <b>engage</b>, <b>study</b>, and <b>activate</b> and is 
+          designed to keep the students interested, motivated, and eager to learn more.
+        </p>
+        <p><b>ESA Phases</b>:
+          <ol>
+            <li><b>Engage phase</b> (Warm-Up): getting the students interested in the class through a game, pictures, audio, video etc.</li>
+            <li><b>Study phase</b>: focusing on any aspect of the language, such as grammar or vocabulary and pronunciation 
+              and can be done in many different styles, from group examination of a text, to discovery related topic vocabulary, 
+              to the teacher giving an explanation of a grammatical pattern.</li>
+            <li><b>Activate stage</b>: putting things learned in lesson in action by gettin students to use the language as communicatively as they can, 
+              through such activities as discussions, role-play, story building, simulations, debates etc.
+            </li>
+          </ol>
+        </p>
+        <h4>Types of ESA Lessons</h4>
+        <h5>ESA sraight arrows sequence</h5>
+        <p>Straight arrow best for the beginners because they need guidance of the teacher. 
+          ESA Straight Arrows sequence is a type of teaching sequence takes students in a straight line: first the teacher gets the class interested and Engaged, 
+          then the students Study something and they then try to Activate it by putting it into practice. </p>
+        <h5>Boomerang sequence</h5>
+        <p>The Boomerang approach after the Engage (E) phase, gets students to perform a task (A) using all and/or any language they know 
+          and only then does the teacher go back to the language Study (S).
+           The Study phase is then undertaken based on what the teacher witnessed in the students language performance. 
+           The teacher in short will fill in the gaps of the students knowledge. To check that learning has taken place the students are then re-activated (A). 
+           It may also be more appropriate for students at intermediate and advanced levels since they have quite a lot of language. </p>
+        <h5>Patchwork sequence</h5>
+        <p>Patchwork lessons include all ESA elements, but can do so more than once and in various orders.
+          A sequence such as E.A.A.S.S.E.S.A would be perfectly possible. EAAASEA Patchwork is commonly used in the class of intermediate and advanced levels, 
+          because they probably reflect the way we learn rather chaotically and not always in a straight line. </p>
+
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+  
+  </header>
